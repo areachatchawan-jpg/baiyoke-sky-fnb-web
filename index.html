@@ -483,7 +483,7 @@ function renderDashboard(){
  $('riskSummary').innerHTML=failRows.length?failRows.map(r=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${r.name}</b> • ${r.date} • FAIL ${r.fail||0} • Score ${r.percent}%<br><span class="meta">${r.notes||'ไม่มี Overall Note'}</span></div>`).join(''):'ไม่พบรายการ FAIL';
 }
 function renderHistory(){const u=currentUser();const visibleRuns=u?runs.filter(r=>canSeeOutlet(r.code)):[];if(!visibleRuns.length){$('historyBox').innerHTML='<div class="empty">ยังไม่มีรายการบันทึก</div>';return}$('historyBox').innerHTML='<table><thead><tr><th>Date</th><th>Outlet</th><th>Shift</th><th>Inspector</th><th>Score</th><th>FAIL</th></tr></thead><tbody>'+visibleRuns.slice().reverse().map(r=>`<tr><td>${r.date}</td><td>${r.name}</td><td>${r.shift}</td><td>${r.inspector}</td><td>${r.percent}%</td><td>${r.fail||0}</td></tr>`).join('')+'</tbody></table>'}
-function addIncident(){
+async function addIncident(){
  const code=$('incidentOutlet').value,o=outlets.find(x=>x[0]===code);
  const item={id:Date.now(),code,name:o[1],type:$('incidentType').value,priority:$('incidentPriority').value,title:$('incidentTitle').value||'ไม่ระบุหัวข้อ',owner:$('incidentOwner').value||'ยังไม่มอบหมาย',due:$('incidentDue').value||'',note:$('incidentNote').value||'',status:'OPEN',date:new Date().toISOString().slice(0,10),createdBy:(currentUser()||{}).name||'Unknown'};
  incidents.push(item);logAudit('CREATE','Incident '+item.id,`${item.name} • ${item.title}`);localStorage.setItem('baiyokeIncidents',JSON.stringify(incidents));
