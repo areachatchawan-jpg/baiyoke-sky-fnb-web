@@ -835,4 +835,42 @@ fillSelects();checkApi();renderChecklist();renderEmployeeTable();renderIncidents
   <div class="actions"><button class="ghost" onclick="enableBrowserAlerts()">Enable Browser Alerts</button><button class="goldbtn" onclick="logoutDemo()">Logout</button></div>
  </div>
 </div>
+
+<script>
+// Phase 25 — Supabase bridge. Keeps the existing UI and local fallback intact.
+let SUPABASE_CFG = {supabaseUrl:'',supabaseAnonKey:'',mode:'supabase'};
+(async function(){
+  try{
+    const r=await fetch('config.json',{cache:'no-store'});
+    if(r.ok){SUPABASE_CFG={...SUPABASE_CFG,...await r.json()};}
+  }catch(e){}
+})();
+function supabaseReady(){return !!(SUPABASE_CFG.supabaseUrl && SUPABASE_CFG.supabaseAnonKey)}
+async function supabaseLogin(employeeId,password){
+  if(!supabaseReady()) return null;
+  const url=SUPABASE_CFG.supabaseUrl.replace(/\/$/,'')+'/rest/v1/rpc/login_employee';
+  const r=await fetch(url,{method:'POST',headers:{'Content-Type':'application/json','apikey':SUPABASE_CFG.supabaseAnonKey,'Authorization':'Bearer '+SUPABASE_CFG.supabaseAnonKey},body:JSON.stringify({p_employee_id:employeeId,p_password:password})});
+  if(!r.ok) throw new Error('Supabase login failed');
+  const rows=await r.json();
+  return Array.isArray(rows)&&rows.length?rows[0]:null;
+}
+async function loginDemo(){
+  const u=$('loginUser').value.trim(), p=$('loginPass').value;
+  if(!u||!p){toast('กรุณากรอก Username และ Password');return}
+  if(supabaseReady()){
+    try{
+      const a=await supabaseLogin(u,p);
+      if(!a){toast('รหัสพนักงานหรือ Password ไม่ถูกต้อง');return}
+      const outletName=(outlets.find(o=>o[0]===a.outlet)||[])[1]||'All Outlets';
+      localStorage.setItem('baiyokeLogin',JSON.stringify({user:a.employee_id,name:a.name,role:a.role,outlet:a.outlet,outletName}));
+      toast('เข้าสู่ระบบ Online สำเร็จ');show('hub');updateUserBadge();applyPermissions();filterOutletSelect();renderOutlets();return;
+    }catch(e){toast('เชื่อมต่อ Supabase ไม่สำเร็จ — ตรวจ config.json');return}
+  }
+  const acct=(employees.find(e=>String(e.id||'').toLowerCase()===u.toLowerCase()&&String(e.pass||'')===p&&e.status==='ACTIVE')
+   || DEMO_EMPLOYEES.find(e=>e.id.toLowerCase()===u.toLowerCase()&&e.pass===p&&e.status==='ACTIVE'));
+  if(!acct){toast('รหัสพนักงานหรือ Password ไม่ถูกต้อง');return}
+  localStorage.setItem('baiyokeLogin',JSON.stringify({user:acct.id,name:acct.name,role:acct.role,outlet:acct.outlet,outletName:acct.outletName}));
+  toast('เข้าสู่ระบบสำเร็จ');show('hub');updateUserBadge();applyPermissions();
+}
+</script>
 </body></html>
