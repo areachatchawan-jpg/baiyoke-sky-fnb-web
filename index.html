@@ -115,7 +115,7 @@ th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;font-size
         <div class="field"><label>Username / รหัสพนักงาน</label><input id="loginUser" placeholder="กรอกรหัสพนักงาน"></div>
         <div class="field"><label>Password / รหัสผ่าน</label><input id="loginPass" type="password" placeholder="กรอกรหัสผ่าน"></div>
         <div class="field"><label>Role</label><select id="loginRole"><option>F&B Manager</option><option>Supervisor</option><option>Inspector</option><option>Admin</option></select></div>
-        <button class="goldbtn" style="width:100%;padding:12px" onclick="loginDemo()">เข้าสู่ระบบ / LOGIN</button>
+        <button class="goldbtn" style="width:100%;padding:12px" onclick="loginDemo()">เข้าสู่ระบบ / LOGIN</button><button class="ghost" style="width:100%;padding:9px;margin-top:8px" onclick="resetDemoLogin()">รีเซ็ตรหัสทดสอบ / RESET DEMO LOGIN</button>
         <div style="text-align:center;font-size:11px;color:var(--muted)">Demo Admin: ADMIN001 / 1234 • Manager: MGR001 / 1234 • Supervisor 76F: SUP76 / 1234 • Supervisor 78F: SUP78 / 1234</div>
       </div>
     </div>
@@ -520,6 +520,13 @@ async function setIncidentStatus(id,status){
 function updateStats(){let today=new Date().toISOString().slice(0,10),rs=runs.filter(r=>r.date===today);$('statDone').textContent=(rs.length?Math.round(rs.reduce((a,r)=>a+r.percent,0)/rs.length):0)+'%';$('statIncident').textContent=incidents.filter(i=>i.status==='OPEN').length}
 function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1800)}
 
+function resetDemoLogin(){
+ localStorage.removeItem('baiyokeLogin');
+ localStorage.setItem('baiyokeEmployees',JSON.stringify(DEMO_EMPLOYEES));
+ $('loginUser').value='ADMIN001';$('loginPass').value='1234';$('loginRole').value='Admin';
+ toast('รีเซ็ตรหัสทดสอบแล้ว: ADMIN001 / 1234');
+}
+
 async function loginDemo(){
  const u=$('loginUser').value.trim(), p=$('loginPass').value;
  if(!u||!p){toast('กรุณากรอก Username และ Password');return}
@@ -531,7 +538,8 @@ async function loginDemo(){
    toast('เข้าสู่ระบบ Online สำเร็จ');show('hub');updateUserBadge();filterOutletSelect();renderOutlets();return;
   }catch(e){toast('Login Online ไม่สำเร็จ');return}
  }
- const acct=employees.find(e=>e.id.toLowerCase()===u.toLowerCase()&&e.pass===p&&e.status==='ACTIVE');
+ const acct=(employees.find(e=>String(e.id||'').toLowerCase()===u.toLowerCase()&&String(e.pass||'')===p&&e.status==='ACTIVE')
+   || DEMO_EMPLOYEES.find(e=>e.id.toLowerCase()===u.toLowerCase()&&e.pass===p&&e.status==='ACTIVE'));
  if(!acct){toast('รหัสพนักงานหรือ Password ไม่ถูกต้อง');return}
  localStorage.setItem('baiyokeLogin',JSON.stringify({user:acct.id,name:acct.name,role:acct.role,outlet:acct.outlet,outletName:acct.outletName}));
  toast('เข้าสู่ระบบสำเร็จ');show('hub');updateUserBadge();applyPermissions();
@@ -583,7 +591,17 @@ const DEMO_EMPLOYEES=[
  {id:'INSPECT001',name:'Inspector',pass:'1234',role:'Inspector',outlet:'ALL',outletName:'All Outlets',status:'ACTIVE'}
 ];
 let employees=JSON.parse(localStorage.getItem('baiyokeEmployees')||'null');
-if(!Array.isArray(employees)||employees.length===0){employees=DEMO_EMPLOYEES;localStorage.setItem('baiyokeEmployees',JSON.stringify(employees));}
+const demoIds=DEMO_EMPLOYEES.map(e=>e.id);
+if(!Array.isArray(employees)||employees.length===0){
+  employees=DEMO_EMPLOYEES;
+}else{
+  // Repair stale LocalStorage accounts from earlier demo versions.
+  const hasDemo=demoIds.some(id=>employees.some(e=>String(e.id||'').toUpperCase()===id));
+  if(!hasDemo){
+    employees=DEMO_EMPLOYEES;
+    localStorage.setItem('baiyokeEmployees',JSON.stringify(employees));
+  }
+}
 function renderEmployeeTable(){
  if(!employees.length){$('employeeTable').innerHTML='<div class="empty">ยังไม่มีบัญชีพนักงาน — เพิ่มรหัสพนักงานด้านบน</div>';return}
  $('employeeTable').innerHTML='<table><thead><tr><th>รหัส</th><th>ชื่อ</th><th>Role</th><th>Outlet</th><th>Status</th><th></th></tr></thead><tbody>'+
