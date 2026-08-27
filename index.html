@@ -2,132 +2,837 @@
 <html lang="th">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Baiyoke Sky F&B Operations Hub</title>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#f7f3ea">
+<title>Baiyoke Sky Hotel — F&B Operations Hub B1</title>
 <style>
 :root{
-  --bg:#f5f7fb;--card:#fff;--text:#18212f;--muted:#6b7280;--line:#e6eaf0;
-  --brand:#0b6fa4;--brand2:#1b9bd1;--soft:#eaf6fb;--danger:#c53d3d;--ok:#258a55;
-  --shadow:0 10px 30px rgba(25,45,70,.08);--r:18px
+ --bg:#f5f7f9;--card:#ffffff;--ink:#17212b;--muted:#71808f;
+ --gold:#b58a3a;--gold2:#d4b16a;--line:#e4e9ee;--nav:#ffffff;
+ --ok:#3f8a68;--danger:#c65a5a;--shadow:0 8px 28px rgba(28,43,56,.08)
 }
-*{box-sizing:border-box} body{margin:0;font-family:Inter,Segoe UI,Tahoma,sans-serif;background:var(--bg);color:var(--text)}
-button,input,select,textarea{font:inherit} button{cursor:pointer}
-.top{background:linear-gradient(135deg,#ffffff,#eef8fc);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
-.nav{max-width:1180px;margin:auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;gap:15px}
-.logo{display:flex;align-items:center;gap:12px;font-weight:800}.logoMark{width:42px;height:42px;border-radius:12px;background:linear-gradient(145deg,#74c7e8,#1476a8);display:grid;place-items:center;color:#fff;font-weight:900;box-shadow:var(--shadow)}
-.nav small{display:block;color:var(--muted);font-weight:500}.navActions{display:flex;gap:8px;align-items:center}
-.btn{border:1px solid var(--line);background:#fff;border-radius:11px;padding:9px 13px}.btn.primary{background:var(--brand);border-color:var(--brand);color:#fff}.btn.ghost{background:transparent}.btn.danger{color:#a82e2e}
-.wrap{max-width:1180px;margin:0 auto;padding:26px 20px 50px}
-.login{min-height:82vh;display:grid;place-items:center;padding:30px}
-.loginCard{width:min(470px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);padding:34px}
-.loginCard h1{margin:0 0 5px}.loginCard p{color:var(--muted);margin-top:0}.field{margin:14px 0}.field label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}.field input,.field select,.field textarea{width:100%;padding:12px;border:1px solid #dce2e9;border-radius:11px;outline:none;background:#fff}.field input:focus,.field select:focus,.field textarea:focus{border-color:var(--brand);box-shadow:0 0 0 3px #dff3fb}
-.demo{background:#f8fafc;border:1px dashed #cbd5e1;padding:12px;border-radius:12px;margin-top:14px;font-size:13px}
-.hidden{display:none!important}.hero{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-bottom:22px}.hero h1{margin:0;font-size:30px}.muted{color:var(--muted)}.badge{display:inline-flex;align-items:center;padding:5px 9px;border-radius:999px;background:var(--soft);color:var(--brand);font-size:12px;font-weight:800}
-.announce{background:#fff;border:1px solid var(--line);border-left:5px solid var(--brand2);border-radius:15px;padding:15px 17px;margin-bottom:22px;box-shadow:var(--shadow)}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:19px;box-shadow:var(--shadow);transition:.15s}.card:hover{transform:translateY(-2px);border-color:#cbdfe9}.card .icon{font-size:28px}.card h3{margin:12px 0 5px}.card p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}.card button{margin-top:15px;width:100%}
-.section{margin-top:28px}.sectionHead{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}.sectionHead h2{margin:0;font-size:19px}.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.stat{background:#fff;border:1px solid var(--line);border-radius:15px;padding:16px}.stat b{font-size:25px;display:block}.stat span{color:var(--muted);font-size:12px}
-.admin{background:#fff;border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:var(--shadow)}.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:17px}.tabs button.active{background:var(--brand);color:#fff;border-color:var(--brand)}.table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:11px;border-bottom:1px solid var(--line);font-size:13px}.table th{color:var(--muted);font-size:12px}.formGrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.toolbar{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed #d5dce5;border-radius:14px}
-.modal{position:fixed;inset:0;background:rgba(15,23,42,.45);display:grid;place-items:center;padding:20px;z-index:50}.modalBox{width:min(760px,100%);max-height:90vh;overflow:auto;background:#fff;border-radius:20px;padding:22px}.modalHead{display:flex;justify-content:space-between;align-items:center}.modalHead h2{margin:0}.notice{padding:12px 14px;background:#f8fafc;border-radius:12px;margin:10px 0}
-footer{text-align:center;color:var(--muted);font-size:12px;margin-top:35px}
-@media(max-width:900px){.grid{grid-template-columns:repeat(2,1fr)}.stats{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:560px){.nav{padding:12px}.wrap{padding:18px 14px 40px}.hero{display:block}.grid,.stats{grid-template-columns:1fr}.navActions .desktop{display:none}.formGrid{grid-template-columns:1fr}.login{padding:15px}.loginCard{padding:24px}}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;background:var(--bg);color:var(--ink)}
+button,input,select,textarea{font:inherit}
+button{cursor:pointer}
+.top{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.nav{max-width:1240px;margin:auto;padding:12px 18px;display:flex;align-items:center;gap:16px}
+.brand{font-weight:900;letter-spacing:.8px;line-height:1.05}
+.brand small{display:block;color:var(--gold);font-size:10px;letter-spacing:1.8px;margin-top:5px}
+.navlinks{margin-left:auto;display:flex;gap:6px;flex-wrap:wrap}
+.navlinks button{border:0;background:transparent;color:#607080;border-radius:10px;padding:9px 11px;font-weight:700}
+.navlinks button.active{background:#f1eadc;color:#8d6927}
+main{max-width:1240px;margin:auto;padding:20px 18px 90px}
+.hero{background:linear-gradient(135deg,#fff,#f7f0e2);border:1px solid #e9dfcd;border-radius:24px;padding:24px;display:flex;justify-content:space-between;gap:20px;align-items:flex-end;box-shadow:var(--shadow)}
+.eyebrow{color:var(--gold);font-size:11px;font-weight:900;letter-spacing:1.8px}
+.hero h1{margin:7px 0 7px;font-size:clamp(28px,5vw,46px);letter-spacing:-.7px}
+.hero p{margin:0;color:var(--muted);max-width:650px}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap}
+.goldbtn{border:1px solid var(--gold);background:var(--gold);color:#fff;border-radius:11px;padding:10px 14px;font-weight:800}
+.ghost{border:1px solid var(--line);background:#fff;color:#4f5e6b;border-radius:11px;padding:10px 14px;font-weight:700}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:16px 0}
+.stat,.card{background:var(--card);border:1px solid var(--line);border-radius:17px;padding:16px;box-shadow:0 4px 18px rgba(28,43,56,.035)}
+.stat b{display:block;font-size:28px;line-height:1.1}.stat span{display:block;color:var(--muted);font-size:12px;margin-top:5px}
+.sectiontitle{display:flex;justify-content:space-between;align-items:center;margin:25px 0 12px}
+.sectiontitle h2{font-size:19px;margin:0}.sectiontitle p{margin:3px 0 0;color:var(--muted);font-size:12px}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.outlet{position:relative;overflow:hidden}
+.outlet:before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--gold)}
+.outlet h3{margin:7px 0 4px;font-size:17px}
+.floor{color:var(--gold);font-weight:900;font-size:12px;letter-spacing:.5px}
+.meta{color:var(--muted);font-size:12px}
+.actions{display:flex;gap:8px;margin-top:13px;flex-wrap:wrap}
+.quick{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.quick .card{display:flex;align-items:center;gap:12px;min-height:82px}
+.icon{width:40px;height:40px;border-radius:12px;background:#f3eee4;display:grid;place-items:center;color:#8d6927;font-weight:900}
+.quick b{font-size:14px}.quick span{display:block;color:var(--muted);font-size:11px;margin-top:3px}
+.page{display:none}.page.active{display:block}
+.bar{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+.field{display:flex;flex-direction:column;gap:6px;min-width:180px;flex:1}
+.field label{font-size:12px;color:var(--muted);font-weight:800}
+.field input,.field select,.field textarea{border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;color:var(--ink)}
+.checklist{display:grid;gap:9px}.checkrow{display:flex;gap:10px;align-items:center;padding:13px;border:1px solid var(--line);border-radius:12px;background:#fff}
+.checkrow input{width:20px;height:20px;accent-color:var(--gold)}.checkrow small{display:block;color:var(--muted);font-size:11px;margin-top:2px}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;font-size:13px}th{background:#f7f4ee}
+.pill{display:inline-block;padding:4px 8px;border-radius:99px;background:#edf5ef;color:var(--ok);font-size:11px;font-weight:800}
+.empty{padding:35px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:14px;background:#fff}
+.toast{position:fixed;right:18px;bottom:18px;background:#17212b;color:#fff;padding:12px 15px;border-radius:10px;display:none;z-index:50;box-shadow:var(--shadow)}
+@media(max-width:850px){
+ .nav{align-items:flex-start;flex-direction:column;padding:11px 14px}
+ .navlinks{width:100%;margin-left:0;overflow:auto;flex-wrap:nowrap}
+ .navlinks button{white-space:nowrap}
+ main{padding:14px 12px 80px}
+ .hero{display:block;padding:20px;border-radius:20px}
+ .hero-actions{margin-top:16px}
+ .stats{grid-template-columns:repeat(2,1fr);gap:9px}
+ .grid{grid-template-columns:1fr}
+ .quick{grid-template-columns:repeat(2,1fr)}
+ .sectiontitle{margin-top:20px}
+ table{display:block;overflow:auto;white-space:nowrap}
+}
+@media(max-width:430px){
+ .brand{font-size:15px}.brand small{font-size:9px}
+ .stats{grid-template-columns:repeat(2,1fr)}
+ .stat{padding:13px}.stat b{font-size:23px}
+ .quick{grid-template-columns:1fr}
+ .hero h1{font-size:30px}
+}
+</style>
+
+<style>
+.mobile-bottom{display:none}
+.profile-sheet{display:none;position:fixed;inset:0;background:rgba(20,30,40,.35);z-index:60;align-items:flex-end}
+.profile-card{width:100%;background:#fff;border-radius:22px 22px 0 0;padding:18px;box-shadow:0 -12px 35px rgba(0,0,0,.12)}
+@media(max-width:850px){
+ body{padding-bottom:72px}
+ .mobile-bottom{position:fixed;display:grid;grid-template-columns:repeat(5,1fr);left:0;right:0;bottom:0;z-index:40;background:rgba(255,255,255,.98);border-top:1px solid var(--line);padding:7px 5px calc(7px + env(safe-area-inset-bottom))}
+ .mobile-bottom button{border:0;background:transparent;color:#74808f;font-size:18px;display:flex;flex-direction:column;align-items:center;gap:2px;padding:4px}
+ .mobile-bottom button.active{color:var(--gold)}
+ .mobile-bottom small{font-size:10px;font-weight:800}
+}
+</style>
+
+<style id="phase24-fab-style">
+:root{
+ --bg:#f7f8fa;--card:#fff;--ink:#17212b;--muted:#74808d;
+ --gold:#b49a72;--gold2:#d8c6a6;--line:#e8e8e8;
+ --shadow:0 10px 30px rgba(22,31,40,.07)
+}
+body{background:var(--bg)}
+.top{background:rgba(255,255,255,.98);border-bottom:1px solid #ececec;box-shadow:0 2px 16px rgba(0,0,0,.03)}
+.nav{max-width:1320px;padding:10px 20px;gap:20px}
+.brand{display:flex;align-items:center;gap:11px;min-width:230px;font-size:15px;letter-spacing:.7px}
+.brand-logo{width:48px;height:42px;object-fit:contain;border-radius:8px;background:#fff}
+.brand-text{display:flex;flex-direction:column}
+.brand-text small{margin-top:4px;color:#9a8058;font-size:9px;letter-spacing:1.5px}
+.navlinks{gap:5px}
+.navlinks button{
+ display:inline-flex;align-items:center;gap:7px;border:1px solid transparent;
+ background:#fff;color:#697582;border-radius:12px;padding:9px 10px;font-size:12px;font-weight:800;
+ transition:.18s ease
+}
+.navlinks button:hover{background:#f7f3ec;border-color:#eee5d7;transform:translateY(-1px)}
+.navlinks button.active{background:#f4eee4;color:#846b43;border-color:#eadfce}
+.nav-ico{width:19px;height:19px;border-radius:7px;display:grid;place-items:center;background:#f2f4f6;font-size:11px;font-weight:900}
+.navlinks button.active .nav-ico{background:#e5d5bb}
+.hero{border-radius:22px;box-shadow:var(--shadow);background:linear-gradient(135deg,#fff 0%,#fbf8f2 100%)}
+.card,.stat{box-shadow:var(--shadow);border-color:#e9eaec}
+.goldbtn{background:#ad936a;border-color:#ad936a;box-shadow:0 5px 14px rgba(173,147,106,.18)}
+.ghost{border-color:#e2e5e8}
+.quick button{border-radius:16px!important;box-shadow:var(--shadow)}
+.login-logo{width:150px;height:116px;object-fit:contain;display:block;margin:0 auto 4px}
+.login-card{position:relative;overflow:hidden}
+.login-card:before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,#d7c29f,#a98b60,#d7c29f)}
+.mobile-bottom{
+ background:rgba(255,255,255,.98)!important;
+ border-top:1px solid #e6e6e6!important;
+ box-shadow:0 -8px 24px rgba(0,0,0,.06)
+}
+.mobile-bottom button{border-radius:13px;margin:1px 2px;padding:6px 3px!important}
+.mobile-bottom button.active{background:#f5efe6}
+.mobile-bottom button span:first-child{width:28px;height:28px;border-radius:10px;background:#f1f3f5;display:grid;place-items:center}
+.mobile-bottom button.active span:first-child{background:#e5d5bb}
+@media(max-width:850px){
+ .nav{padding:8px 12px}
+ .brand{min-width:0}
+ .brand-logo{width:42px;height:36px}
+ .navlinks{display:none}
+ main{padding:14px 12px 88px}
+}
 </style>
 </head>
 <body>
-<div id="app"></div>
+<header class="top"><div class="nav">
+<div class="brand"><img class="brand-logo" src="baiyoke-logo.jpg" alt="Baiyoke Sky Hotel"><div class="brand-text">BAIYOKE SKY HOTEL<small>F&amp;B OPERATIONS HUB</small></div></div>
+<div class="navlinks">
+<button data-page="hub" class="active"><span class="nav-ico">⌂</span><span>Hub</span></button><button data-page="checklist"><span class="nav-ico">✓</span><span>Checklist</span></button><button data-page="master"><span class="nav-ico">▦</span><span>Master Dashboard</span></button><button data-page="dashboard"><span class="nav-ico">◫</span><span>Dashboard</span></button><button data-page="reports"><span class="nav-ico">▤</span><span>Reports</span></button><button data-page="adminhub"><span class="nav-ico">⚙</span><span>Admin Tools</span></button><button data-page="approval"><span class="nav-ico">✓</span><span>Approval</span></button><button data-page="notifications"><span class="nav-ico">●</span><span>Alerts</span></button><button data-page="integrations"><span class="nav-ico">↗</span><span>Notify</span></button><button data-page="complaints"><span class="nav-ico">▣</span><span>Complaints</span></button><button data-page="history"><span class="nav-ico">◷</span><span>History</span></button><button data-page="incident"><span class="nav-ico">!</span><span>Incident</span></button><button data-page="team"><span class="nav-ico">♙</span><span>Team</span></button><button data-page="settings"><span class="nav-ico">⚙</span><span>Settings</span></button><button data-page="login"><span class="nav-ico">↪</span><span>Login</span></button><button id="logoutBtn" onclick="logoutDemo()" style="display:none"><span class="nav-ico">↩</span><span>Logout</span></button>
+</div></div></header>
+<main>
 
+<section id="login" class="page active">
+  <div style="min-height:78vh;display:grid;place-items:center;padding:24px 0">
+    <div class="login-card" style="width:min(460px,100%);background:#fff;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:var(--shadow)">
+      <div style="text-align:center">
+        <img class="login-logo" src="baiyoke-logo.jpg" alt="Baiyoke Sky Hotel">
+        <div class="eyebrow">BAIYOKE SKY HOTEL</div>
+        <h1 style="font-size:26px;margin:7px 0">F&B OPERATIONS HUB</h1>
+        <p class="meta">เข้าสู่ระบบเพื่อจัดการงาน Food & Beverage</p>
+      </div>
+      <div style="margin-top:24px;display:grid;gap:12px">
+        <div class="field"><label>Username / รหัสพนักงาน</label><input id="loginUser" placeholder="กรอกรหัสพนักงาน"></div>
+        <div class="field"><label>Password / รหัสผ่าน</label><input id="loginPass" type="password" placeholder="กรอกรหัสผ่าน"></div>
+        <div class="field"><label>Role</label><select id="loginRole"><option>F&B Manager</option><option>Supervisor</option><option>Inspector</option><option>Admin</option></select></div>
+        <button class="goldbtn" style="width:100%;padding:12px" onclick="loginDemo()">เข้าสู่ระบบ / LOGIN</button><button class="ghost" style="width:100%;padding:9px;margin-top:8px" onclick="resetDemoLogin()">รีเซ็ตรหัสทดสอบ / RESET DEMO LOGIN</button>
+        <div style="text-align:center;font-size:11px;color:var(--muted)">Demo Admin: ADMIN001 / 1234 • Manager: MGR001 / 1234 • Supervisor 76F: SUP76 / 1234 • Supervisor 78F: SUP78 / 1234</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hub" class="page">
+<div class="hero"><div><div class="eyebrow">HOTEL F&B • DAILY OPERATIONS</div><h1>Operations Hub</h1><p>ระบบตรวจมาตรฐานห้องอาหาร แยกแต่ละ Outlet ของ Baiyoke Sky Hotel</p></div><button class="goldbtn" onclick="openChecklist()">เริ่ม Checklist</button></div>
+<div class="stats"><div class="stat"><b id="statOutlets">9</b><span>Active Outlets</span></div><div class="stat"><b id="statDone">0%</b><span>Today Completion</span></div><div class="stat"><b id="statIncident">0</b><span>Open Incidents</span></div><div class="stat"><b>3</b><span>Team Members</span></div></div>
+<div class="sectiontitle"><h2>F&B Outlets</h2><span class="meta">แยก 76F / 78F ตาม Outlet</span></div>
+<div id="outlets" class="grid"></div>
+</section>
+
+<section id="checklist" class="page">
+<div class="sectiontitle"><div><h2>Daily Checklist</h2><p>Pass / Fail / N/A • Score • Corrective Action</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>Outlet</label><select id="outletSelect" onchange="renderChecklist()"></select></div>
+<div class="field"><label>Shift</label><select id="shift"><option>Morning</option><option>Afternoon</option><option>Night</option></select></div>
+<div class="field"><label>Inspector</label><input id="inspector" placeholder="ชื่อผู้ตรวจ"></div>
+</div>
+<div class="stats" style="margin:10px 0"><div class="stat"><b id="scoreNow">0%</b><span>Current Score</span></div><div class="stat"><b id="passNow">0</b><span>PASS</span></div><div class="stat"><b id="failNow">0</b><span>FAIL</span></div><div class="stat"><b id="naNow">0</b><span>N/A</span></div></div>
+</div>
+<div id="checklistItems" class="checklist"></div>
+<div class="card" style="margin-top:12px"><div class="field"><label>Overall Notes / Corrective Action</label><textarea id="notes" rows="4" placeholder="รายละเอียดการแก้ไข / สิ่งที่ต้องติดตาม"></textarea></div><div class="actions"><button class="goldbtn" onclick="saveChecklist()">บันทึกผลการตรวจ</button><button class="ghost" onclick="clearChecklist()">ล้างผล</button></div></div>
+</section>
+
+<section id="master" class="page">
+<div class="sectiontitle"><div><h2>Executive Master Dashboard</h2><p>Baiyoke Sky F&B • One-page Management View</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="stats">
+<div class="stat"><b id="mScore">0%</b><span>F&B Score</span></div>
+<div class="stat"><b id="mChecks">0</b><span>Checks</span></div>
+<div class="stat"><b id="mFail">0</b><span>FAIL</span></div>
+<div class="stat"><b id="mComplaint">0</b><span>Open Complaints</span></div>
+<div class="stat"><b id="mIncident">0</b><span>Open Incidents</span></div>
+<div class="stat"><b id="mApproval">0</b><span>Pending Approval</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>🏆 Outlet Performance</h3><div id="masterOutlet"></div></div>
+<div class="card"><h3>⚠️ Management Attention</h3><div id="masterAttention"></div></div>
+<div class="card"><h3>📌 Workflow Status</h3><div id="masterWorkflow"></div></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>Management Snapshot</h3><div id="masterSnapshot"></div></div>
+</section>
+<section id="dashboard" class="page">
+<div class="sectiontitle"><div><h2>Executive Dashboard</h2><p>ภาพรวมผลตรวจ F&B สำหรับผู้บริหาร</p></div><div class="actions"><button class="ghost" onclick="exportDemoCSV()">Export CSV</button><button class="ghost" onclick="show('hub')">กลับ Hub</button></div></div>
+<div class="stats">
+<div class="stat"><b id="execScore">0%</b><span>Average Score</span></div>
+<div class="stat"><b id="execRuns">0</b><span>Completed Checks</span></div>
+<div class="stat"><b id="execFail">0</b><span>Total FAIL</span></div>
+<div class="stat"><b id="execOpen">0</b><span>Open Incidents</span></div>
+</div>
+<div class="grid" style="margin-bottom:12px">
+<div class="card"><h3>🏆 Top Outlet</h3><div id="topOutlet" class="meta">ยังไม่มีข้อมูล</div></div>
+<div class="card"><h3>⚠️ Needs Attention</h3><div id="attentionOutlet" class="meta">ยังไม่มีข้อมูล</div></div>
+<div class="card"><h3>📅 Today</h3><div id="todaySummary" class="meta">ยังไม่มีการตรวจ</div></div>
+</div>
+<div class="card"><h3>Outlet Performance</h3><table><thead><tr><th>Outlet</th><th>Floor</th><th>Score</th><th>Runs</th><th>FAIL</th><th>Open Incident</th></tr></thead><tbody id="dashBody"></tbody></table></div>
+<div class="card" style="margin-top:12px"><h3>FAIL / Risk Summary</h3><div id="riskSummary" class="meta">ยังไม่มีข้อมูล</div></div>
+</section>
+
+<section id="history" class="page"><div class="sectiontitle"><h2>Checklist History</h2><button class="ghost" onclick="show('hub')">กลับ Hub</button></div><div id="historyBox" class="card"></div></section>
+
+<section id="incident" class="page">
+<div class="sectiontitle"><div><h2>Incident & Corrective Action</h2><p>ติดตาม FAIL → ผู้รับผิดชอบ → Due Date → Closed</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>Outlet</label><select id="incidentOutlet"></select></div>
+<div class="field"><label>ประเภท</label><select id="incidentType"><option>Service</option><option>Food Safety</option><option>Cleaning</option><option>Equipment</option><option>Complaint</option><option>Other</option></select></div>
+<div class="field"><label>Priority</label><select id="incidentPriority"><option>High</option><option>Medium</option><option>Low</option></select></div>
+</div>
+<div class="bar">
+<div class="field"><label>หัวข้อ</label><input id="incidentTitle" placeholder="หัวข้อปัญหา"></div>
+<div class="field"><label>ผู้รับผิดชอบ</label><input id="incidentOwner" placeholder="ชื่อผู้รับผิดชอบ"></div>
+<div class="field"><label>Due Date</label><input id="incidentDue" type="date"></div>
+</div>
+<div class="field"><label>รายละเอียด / Corrective Action</label><textarea id="incidentNote" rows="4" placeholder="สาเหตุ แนวทางแก้ไข และสิ่งที่ต้องติดตาม"></textarea></div>
+<div class="actions"><button class="goldbtn" onclick="addIncident()">สร้าง Incident</button><button class="ghost" onclick="prefillFromFail()">สร้างจาก FAIL ล่าสุด</button></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>Incident Register</h3><div id="incidentList"></div></div>
+</section>
+
+<section id="team" class="page">
+<div class="sectiontitle"><div><h2>Team Management</h2><p>จัดการรหัสพนักงาน • Role • Outlet Permission</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>Employee ID / รหัสพนักงาน</label><input id="empId" placeholder="เช่น BK001"></div>
+<div class="field"><label>ชื่อพนักงาน</label><input id="empName" placeholder="ชื่อ-นามสกุล"></div>
+<div class="field"><label>Password</label><input id="empPass" type="password" placeholder="กำหนดรหัสผ่าน"></div>
+</div>
+<div class="bar">
+<div class="field"><label>Role</label><select id="empRole"><option>Admin</option><option>F&B Manager</option><option>Supervisor</option><option>Inspector</option></select></div>
+<div class="field"><label>Outlet</label><select id="empOutlet"><option value="ALL">All Outlets</option></select></div>
+<div class="field"><label>Status</label><select id="empStatus"><option value="ACTIVE">Active</option><option value="INACTIVE">Inactive</option></select></div>
+</div>
+<button class="goldbtn" onclick="addEmployee()">เพิ่ม / บันทึกพนักงาน</button>
+</div>
+<div class="card" style="margin-top:12px"><h3>Employee Accounts</h3><div id="employeeTable"></div></div>
+</section>
+
+<section id="integrations" class="page">
+<div class="sectiontitle"><div><h2>Notification Integrations</h2><p>LINE / Email / Webhook • Alert Routing</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<h3>Alert Routing</h3>
+<p class="meta">กำหนดว่าประเภท Alert ใดควรส่งไปช่องทางไหน</p>
+<div class="bar">
+<div class="field"><label>FAIL Alert</label><select id="routeFail"><option>In-App</option><option>LINE</option><option>Email</option><option>LINE + Email</option></select></div>
+<div class="field"><label>Overdue</label><select id="routeOverdue"><option>In-App</option><option>LINE</option><option>Email</option><option>LINE + Email</option></select></div>
+<div class="field"><label>Pending Approval</label><select id="routeApproval"><option>In-App</option><option>LINE</option><option>Email</option><option>LINE + Email</option></select></div>
+</div>
+<button class="goldbtn" onclick="saveRoutes()">บันทึก Routing</button>
+</div>
+<div class="grid" style="margin-top:12px">
+<div class="card"><h3>LINE</h3><p class="meta">สำหรับ Production ให้เชื่อม LINE Messaging API / Official Account ผ่าน Backend</p><div class="field"><label>Webhook URL</label><input id="lineWebhook" placeholder="https://..."></div><button class="ghost" onclick="saveIntegration()">บันทึก</button></div>
+<div class="card"><h3>Email</h3><p class="meta">ตั้งค่าผ่าน Backend SMTP/Email provider</p><div class="field"><label>Recipient</label><input id="emailRecipient" type="email" placeholder="manager@example.com"></div><button class="ghost" onclick="saveIntegration()">บันทึก</button></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>Integration Test</h3><p class="meta">ทดสอบการสร้าง Alert ในระบบก่อนเชื่อมผู้ให้บริการจริง</p><button class="goldbtn" onclick="testNotification()">Send Test Alert</button><div id="testResult" class="meta" style="margin-top:8px"></div></div>
+</section>
+<section id="complaints" class="page">
+<div class="sectiontitle"><div><h2>Complaint Management</h2><p>รับเรื่อง • Assign • Corrective Action • Close • Analytics</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>Source</label><select id="compSource"><option>Customer</option><option>Google</option><option>Facebook</option><option>Wongnai</option><option>Other</option></select></div>
+<div class="field"><label>Outlet</label><select id="compOutlet"></select></div>
+<div class="field"><label>Priority</label><select id="compPriority"><option>High</option><option>Medium</option><option>Low</option></select></div>
+</div>
+<div class="bar">
+<div class="field"><label>Category</label><select id="compCategory"><option>Food Quality</option><option>Food Safety</option><option>Service</option><option>Cleanliness</option><option>Price / Value</option><option>Other</option></select></div>
+<div class="field"><label>Owner</label><input id="compOwner" placeholder="ผู้รับผิดชอบ"></div>
+<div class="field"><label>Due Date</label><input id="compDue" type="date"></div>
+</div>
+<div class="field"><label>Complaint / Detail</label><textarea id="compDetail" rows="4" placeholder="รายละเอียดข้อร้องเรียน"></textarea></div>
+<div class="field"><label>Corrective Action</label><textarea id="compAction" rows="3" placeholder="แนวทางแก้ไข"></textarea></div>
+<div class="actions"><button class="goldbtn" onclick="addComplaint()">บันทึก Complaint</button></div>
+</div>
+<div class="stats">
+<div class="stat"><b id="compOpen">0</b><span>Open</span></div><div class="stat"><b id="compHigh">0</b><span>High Priority</span></div><div class="stat"><b id="compOverdue">0</b><span>Overdue</span></div><div class="stat"><b id="compClosed">0</b><span>Closed</span></div>
+</div>
+<div class="card"><h3>Complaint Register</h3><div id="complaintList"></div></div>
+</section>
+<section id="notifications" class="page">
+<div class="sectiontitle"><div><h2>Notifications & Alerts</h2><p>FAIL • Incident • Due Date • Pending Approval</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="stats">
+<div class="stat"><b id="notFail">0</b><span>FAIL Alerts</span></div>
+<div class="stat"><b id="notDue">0</b><span>Due / Overdue</span></div>
+<div class="stat"><b id="notPending">0</b><span>Pending Approval</span></div>
+<div class="stat"><b id="notOpen">0</b><span>Open Incidents</span></div>
+</div>
+<div class="card"><h3>Action Center</h3><div id="notificationList"></div></div>
+</section>
+<section id="approval" class="page">
+<div class="sectiontitle"><div><h2>Approval & Audit</h2><p>Manager Review • Approve / Reject • Audit Trail</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="stats">
+<div class="stat"><b id="apPending">0</b><span>Pending Approval</span></div>
+<div class="stat"><b id="apApproved">0</b><span>Approved</span></div>
+<div class="stat"><b id="apRejected">0</b><span>Rejected</span></div>
+<div class="stat"><b id="apAudit">0</b><span>Audit Events</span></div>
+</div>
+<div class="card"><h3>Checklist Approval Queue</h3><div id="approvalList"></div></div>
+<div class="card" style="margin-top:12px"><h3>Audit Log</h3><div id="auditList"></div></div>
+</section>
+<section id="adminhub" class="page">
+<div class="sectiontitle"><div><h2>Hub & Admin Tools</h2><p>จัดการ Modules • Announcements • Access • System Status</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>Announcement</label><input id="announceText" placeholder="ประกาศถึงทีม F&B"></div>
+<div class="field"><label>Priority</label><select id="announcePriority"><option>Normal</option><option>Important</option><option>Urgent</option></select></div>
+</div>
+<button class="goldbtn" onclick="addAnnouncement()">Publish Announcement</button>
+</div>
+<div class="grid" style="margin-top:12px">
+<div class="card"><h3>Modules</h3><div id="moduleList"></div></div>
+<div class="card"><h3>System Status</h3><div class="meta">● Online</div><div class="actions"><button class="ghost" onclick="setApiBase()">Connect Backend API</button></div><p class="meta">Local Demo Storage</p><p class="meta">Authentication: Demo</p><p class="meta">Backend: Not connected</p></div>
+<div class="card"><h3>Access Control</h3><div class="meta">Admin: Full Access</div><div class="meta">Manager: Reports / Incidents / Dashboard</div><div class="meta">Supervisor: Checklist / History</div><div class="meta">Inspector: Checklist / History</div></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>Announcements</h3><div id="announceList"></div></div>
+</section>
+<section id="reports" class="page">
+<div class="sectiontitle"><div><h2>Reports & Analytics</h2><p>Daily • Weekly • Monthly • Outlet Performance</p></div><div class="actions"><button class="ghost" onclick="exportDemoCSV()">Export CSV</button><button class="ghost" onclick="show('hub')">กลับ Hub</button></div></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>ช่วงรายงาน</label><select id="reportPeriod" onchange="renderReports()"><option value="today">วันนี้</option><option value="7">7 วันล่าสุด</option><option value="30">30 วันล่าสุด</option><option value="all">ทั้งหมด</option></select></div>
+<div class="field"><label>Outlet</label><select id="reportOutlet" onchange="renderReports()"><option value="ALL">All permitted outlets</option></select></div>
+</div>
+</div>
+<div class="stats">
+<div class="stat"><b id="repChecks">0</b><span>Checks</span></div>
+<div class="stat"><b id="repScore">0%</b><span>Average Score</span></div>
+<div class="stat"><b id="repFail">0</b><span>FAIL</span></div>
+<div class="stat"><b id="repInc">0</b><span>Incidents</span></div>
+</div>
+<div class="grid">
+<div class="card"><h3>🏆 Outlet Ranking</h3><div id="ranking"></div></div>
+<div class="card"><h3>⚠️ Repeated FAIL</h3><div id="repeatFail"></div></div>
+<div class="card"><h3>📌 Incident Status</h3><div id="incidentStats"></div></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>Report Detail</h3><div id="reportTable"></div></div>
+</section>
+<section id="settings" class="page">
+<div class="sectiontitle"><div><h2>Outlet Management & Checklist Editor</h2><p>Admin แก้ข้อมูล Outlet และ Checklist แยกราย Outlet</p></div><button class="ghost" onclick="show('hub')">กลับ Hub</button></div>
+<div class="card">
+<div class="bar">
+<div class="field"><label>เลือก Outlet</label><select id="editorOutlet" onchange="loadOutletEditor()"></select></div>
+<div class="field"><label>ชื่อ Outlet</label><input id="editorName"></div>
+<div class="field"><label>ชั้น / Floor</label><input id="editorFloor"></div>
+</div>
+<div class="actions"><button class="goldbtn" onclick="saveOutletMeta()">บันทึกข้อมูล Outlet</button><button class="ghost" onclick="resetEditorChecklist()">ใช้ Checklist มาตรฐาน</button></div>
+</div>
+<div class="card" style="margin-top:12px">
+<h3>Checklist Editor</h3>
+<p class="meta">รูปแบบ: ## หมวด / - รายการตรวจ • แต่ละ Outlet แยกกัน 100%</p>
+<textarea id="editorText" rows="18" style="width:100%;margin-top:10px;border:1px solid var(--line);border-radius:10px;padding:12px;font-family:inherit"></textarea>
+<div class="actions"><button class="goldbtn" onclick="saveOutletChecklist()">บันทึก Checklist ของ Outlet นี้</button></div>
+</div>
+<div class="card" style="margin-top:12px"><h3>Outlet List</h3><div id="outletAdminTable"></div></div>
+</section>
+</main>
+<div id="toast" class="toast"></div>
 <script>
-const KEY="baiyoke_fnb_phase23";
-const defaults={
-  users:[
-    {id:"ADMIN001",name:"Baiyoke Admin",role:"Admin",outlet:"All",pin:"1234"},
-    {id:"MGR001",name:"F&B Manager",role:"F&B Manager",outlet:"All",pin:"1234"},
-    {id:"SUP76",name:"Supervisor 76F",role:"Supervisor",outlet:"76F",pin:"1234"},
-    {id:"SUP78",name:"Supervisor 78F",role:"Supervisor",outlet:"78F",pin:"1234"},
-    {id:"INSPECT001",name:"Inspector",role:"Inspector",outlet:"All",pin:"1234"}
-  ],
-  outlets:[
-    {code:"76F",name:"Restaurant 76F",status:"เปิด"},
-    {code:"78F",name:"Restaurant 78F",status:"เปิด"},
-    {code:"BYSKY",name:"Baiyoke Sky F&B",status:"เปิด"}
-  ],
-  announcements:[{title:"ยินดีต้อนรับสู่ Baiyoke F&B Operations Hub",detail:"ระบบต้นแบบยึดโครงสร้างการใช้งานแบบ FAB: Hub, Team Management, ระบบประกาศ และเครื่องมือผู้ดูแล",date:"วันนี้"}]
-};
-function load(){try{return JSON.parse(localStorage.getItem(KEY))||structuredClone(defaults)}catch(e){return structuredClone(defaults)}}
-let db=load(), current=null;
-function save(){localStorage.setItem(KEY,JSON.stringify(db))}
-function esc(s){return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]))}
-function renderLogin(){
- document.getElementById("app").innerHTML=`<div class="login">
-  <div class="loginCard">
-   <div class="logo"><div class="logoMark">B</div><div>Baiyoke Sky F&B<small>Operations Hub</small></div></div>
-   <h1 style="margin-top:25px">เข้าสู่ระบบ</h1><p>ระบบงานปฏิบัติการและฝึกอบรม</p>
-   <div class="field"><label>รหัสพนักงาน</label><input id="uid" inputmode="text" placeholder="เช่น ADMIN001"></div>
-   <div class="field"><label>รหัสผ่าน / PIN</label><input id="pin" type="password" inputmode="numeric" placeholder="กรอกรหัสผ่าน"></div>
-   <button class="btn primary" style="width:100%;padding:12px" onclick="login()">เข้าสู่ Operations Hub</button>
-   <div class="demo"><b>Demo สำหรับทดสอบ</b><br>ADMIN001 / 1234 · MGR001 / 1234 · SUP76 / 1234 · SUP78 / 1234 · INSPECT001 / 1234</div>
-  </div></div>`;
+const outlets=[
+['BKS76','Bangkok Sky Restaurant 76F','76F'],['BKS78','Bangkok Sky Restaurant 78F','78F'],['FM75','Baiyoke Floating Market','75F'],['ST79','Stella Palace','79F'],['BB81','Bangkok Balcony','81F'],['CG82','Crystal Grill','82F'],['RT83','The Roof Top Bar','83F'],['SC18','Sky Coffee Shop','18F'],['FB18','Fruit Buffet','18F']];
+const sections={Opening:['พื้นที่บริการสะอาดและพร้อมเปิด','โต๊ะ/เก้าอี้/อุปกรณ์บริการครบ','Buffet / Counter / Bar พร้อมใช้งาน','ตรวจอาหารและป้ายชื่ออาหาร','POS / Printer / Cashier พร้อม'],FoodSafety:['ตรวจอุณหภูมิอาหารร้อน','ตรวจอุณหภูมิอาหารเย็น / ตู้แช่','ตรวจวันผลิต / หมดอายุ / Label / FIFO','ตรวจสุขอนามัยผู้สัมผัสอาหาร'],Service:['Greeting แขกตามมาตรฐาน','ตรวจความพร้อมโต๊ะก่อนบริการ','เติมอาหาร / เครื่องดื่มต่อเนื่อง','เก็บจานและจัดโต๊ะ'],Cleaning:['ทำความสะอาดโต๊ะและเก้าอี้','ทำความสะอาดพื้นและจุดสัมผัส','ทำความสะอาด Buffet Counter / Bar'],Equipment:['ตรวจตู้เย็น / Freezer และอุณหภูมิ','ตรวจเครื่องอุ่นอาหาร','ตรวจ POS / Printer'],Closing:['จัดเก็บอาหารและติด Label','ตรวจอาหารคงเหลือ / Dispose','ทำความสะอาดพื้นที่','ทำ Shift Handover']};
+let runs=JSON.parse(localStorage.getItem('baiyokeRuns')||'[]'), incidents=JSON.parse(localStorage.getItem('baiyokeIncidents')||'[]');
+const $=id=>document.getElementById(id);
+
+
+
+let notificationRoutes=JSON.parse(localStorage.getItem('baiyokeNotificationRoutes')||'{"fail":"In-App","overdue":"In-App","approval":"In-App"}');
+let notificationIntegrations=JSON.parse(localStorage.getItem('baiyokeNotificationIntegrations')||'{"lineWebhook":"","emailRecipient":""}');
+function loadNotificationSettings(){
+ if($('routeFail'))$('routeFail').value=notificationRoutes.fail;
+ if($('routeOverdue'))$('routeOverdue').value=notificationRoutes.overdue;
+ if($('routeApproval'))$('routeApproval').value=notificationRoutes.approval;
+ if($('lineWebhook'))$('lineWebhook').value=notificationIntegrations.lineWebhook;
+ if($('emailRecipient'))$('emailRecipient').value=notificationIntegrations.emailRecipient;
 }
-function login(){
- const id=document.getElementById("uid").value.trim().toUpperCase(), pin=document.getElementById("pin").value.trim();
- const u=db.users.find(x=>x.id===id&&x.pin===pin);
- if(!u)return alert("รหัสพนักงานหรือ PIN ไม่ถูกต้อง");
- current=u; renderHub();
+function saveRoutes(){
+ notificationRoutes={fail:$('routeFail').value,overdue:$('routeOverdue').value,approval:$('routeApproval').value};
+ localStorage.setItem('baiyokeNotificationRoutes',JSON.stringify(notificationRoutes));toast('บันทึก Alert Routing แล้ว');
 }
-function header(){
- return `<div class="top"><div class="nav"><div class="logo"><div class="logoMark">B</div><div>Baiyoke Sky F&B<small>Operations Hub</small></div></div>
- <div class="navActions"><span class="badge desktop">${esc(current.role)} · ${esc(current.id)}</span><button class="btn" onclick="renderHub()">Hub</button><button class="btn danger" onclick="logout()">ออกจากระบบ</button></div></div></div>`;
+function saveIntegration(){
+ notificationIntegrations={lineWebhook:$('lineWebhook').value.trim(),emailRecipient:$('emailRecipient').value.trim()};
+ localStorage.setItem('baiyokeNotificationIntegrations',JSON.stringify(notificationIntegrations));toast('บันทึก Integration แล้ว');
 }
-function logout(){current=null;renderLogin()}
-function canAdmin(){return current?.role==="Admin"}
-const cards=[
- ["📋","Checklist","ตรวจมาตรฐานงานประจำวันและบันทึกผล","checklist"],
- ["🚨","Incident","แจ้งเหตุผิดปกติ / Food Safety / Service","incident"],
- ["📝","Complaint","บันทึกและติดตามข้อร้องเรียน","complaint"],
- ["✅","Approval","รายการที่ต้องตรวจและอนุมัติ","approval"],
- ["🔔","Notifications","ประกาศและการแจ้งเตือนจากส่วนกลาง","alerts"],
- ["📊","Dashboard","ภาพรวมผลการปฏิบัติงาน","dashboard"],
- ["📈","Executive Master","สรุปสำหรับผู้บริหาร","executive"],
- ["⚙️","Admin Tools","Users, Outlets, Announcements และสิทธิ์","admin"]
+function testNotification(){
+ const now=new Date().toLocaleString();$('testResult').textContent=`Test Alert created at ${now} • In-App OK`;
+ if('Notification' in window&&Notification.permission==='granted')new Notification('Baiyoke F&B Test Alert',{body:'ระบบแจ้งเตือนทำงานแล้ว'});
+ logAudit('TEST','Notification','In-App test alert');
+}
+
+function daysFromToday(dateStr){
+ if(!dateStr)return null;const a=new Date();a.setHours(0,0,0,0);const b=new Date(dateStr);b.setHours(0,0,0,0);return Math.ceil((b-a)/86400000)
+}
+function renderNotifications(){
+ const u=currentUser();if(!u){return}
+ const vr=runs.filter(r=>canSeeOutlet(r.code)), vi=incidents.filter(i=>canSeeOutlet(i.code));
+ const fails=vr.filter(r=>(r.fail||0)>0), pending=vr.filter(r=>!r.approval||r.approval.status==='PENDING');
+ const due=vi.filter(i=>i.status!=='CLOSED'&&i.due&&daysFromToday(i.due)<=2);
+ const open=vi.filter(i=>i.status==='OPEN');
+ $('notFail').textContent=fails.length;$('notDue').textContent=due.length;$('notPending').textContent=pending.length;$('notOpen').textContent=open.length;
+ let items=[];
+ fails.slice().reverse().slice(0,8).forEach(r=>items.push({type:'FAIL',title:`FAIL • ${r.name}`,detail:`${r.date} • Score ${r.percent}% • FAIL ${r.fail}`,action:()=>show('history')}));
+ due.forEach(i=>items.push({type:daysFromToday(i.due)<0?'OVERDUE':'DUE',title:`${i.title}`,detail:`${i.name} • Due ${i.due} • ${i.owner}`,action:()=>show('incident')}));
+ pending.slice().reverse().slice(0,8).forEach(r=>items.push({type:'APPROVAL',title:`รออนุมัติ • ${r.name}`,detail:`${r.date} • ${r.inspector} • Score ${r.percent}%`,action:()=>show('approval')}));
+ open.slice().reverse().slice(0,8).forEach(i=>items.push({type:'INCIDENT',title:`Open Incident • ${i.name}`,detail:`${i.priority} • ${i.owner} • ${i.title}`,action:()=>show('incident')}));
+ $('notificationList').innerHTML=items.length?items.map((x,i)=>`<div style="display:flex;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)"><div><b>${x.title}</b><div class="meta">${x.type} • ${x.detail}</div></div><button class="ghost" onclick="notificationGo(${i})">เปิด</button></div>`).join(''):'<div class="empty">ไม่มีรายการที่ต้องดำเนินการ 🎉</div>';
+ window._notificationItems=items;
+}
+function notificationGo(i){window._notificationItems?.[i]?.action?.()}
+
+async function enableBrowserAlerts(){if(!('Notification' in window)){toast('Browser นี้ไม่รองรับ');return}const p=await Notification.requestPermission();toast(p==='granted'?'เปิดแจ้งเตือนแล้ว':'ยังไม่ได้อนุญาตแจ้งเตือน')} 
+function showProfile(){
+ const u=currentUser(); if(!u){show('login');return}
+ $('profileContent').innerHTML=`<div class="card"><div class="floor">${u.role}</div><h3>${u.name}</h3><div class="meta">Employee ID: ${u.user}</div><div class="meta">Outlet Permission: ${u.outletName}</div></div>`;
+ $('profileSheet').style.display='flex';
+}
+function closeProfile(){$('profileSheet').style.display='none'}
+function syncMobileNav(p){document.querySelectorAll('.mobile-bottom button').forEach(b=>b.classList.toggle('active',b.dataset.mob===p))}
+
+function show(p){const u=currentUser();if(p!=='login'&&!u){p='login'}if((p==='team'||p==='settings'||p==='adminhub'||p==='approval'||p==='integrations'||p==='complaints')&&u&&u.role!=='Admin'){toast('เฉพาะ Admin เท่านั้น');p='hub'}document.querySelectorAll('.page').forEach(x=>x.classList.remove('active'));$(p).classList.add('active');document.querySelectorAll('.navlinks button').forEach(x=>x.classList.toggle('active',x.dataset.page===p));syncMobileNav(p);if(p==='master')renderMaster();if(p==='dashboard')renderDashboard();if(p==='approval'||p==='integrations'||p==='complaints')renderApproval();if(p==='notifications')renderNotifications();if(p==='integrations'||p==='complaints')loadNotificationSettings();if(p==='complaints'){renderComplaintOutlets();renderComplaints()}if(p==='adminhub'){renderModules();renderAnnouncements()}if(p==='reports'){fillReportOutlet();renderReports()}if(p==='history')renderHistory();if(p==='incident')renderIncidents();scrollTo(0,0)}
+document.querySelectorAll('.navlinks button').forEach(b=>b.onclick=()=>{const p=b.dataset.page;if(p!=='login'&&!currentUser()){toast('กรุณา Login ก่อน');show('login');return}show(p);if(p==='team')renderEmployeeTable();});
+function fillSelects(){['outletSelect','incidentOutlet'].forEach(id=>$(id).innerHTML=outlets.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join(''));$('empOutlet').innerHTML='<option value="ALL">All Outlets</option>'+outlets.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join('');if($('editorOutlet'))$('editorOutlet').innerHTML=outlets.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join('');}
+function renderOutlets(){
+ const u=currentUser(), visible=u?outlets.filter(o=>canSeeOutlet(o[0])):outlets;
+ $('outlets').innerHTML=visible.map(o=>`<div class="card outlet"><div class="floor">${o[2]}</div><h3>${o[1]}</h3><div class="meta">${o[0]}</div><div class="actions"><button class="goldbtn" onclick="openChecklist('${o[0]}')">Checklist</button><button class="ghost" onclick="show('dashboard')">Dashboard</button></div></div>`).join('');
+ $('statOutlets').textContent=visible.length;updateStats();
+}
+function openChecklist(code){if(code&&!canSeeOutlet(code)){toast('คุณไม่มีสิทธิ์เข้า Outlet นี้');return}show('checklist');if(code)$('outletSelect').value=code;filterOutletSelect();renderChecklist()}
+
+function filterOutletSelect(){
+ const u=currentUser();
+ if(!u)return;
+ const visible=outlets.filter(o=>canSeeOutlet(o[0]));
+ $('outletSelect').innerHTML=visible.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join('');
+ $('incidentOutlet').innerHTML=visible.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join('');
+ if(visible.length && !visible.some(o=>o[0]===$('outletSelect').value)) $('outletSelect').value=visible[0][0];
+}
+
+function renderChecklist(){
+ const s=outletChecklist($('outletSelect').value);let i=0,html='';
+ for(const [sec,items] of Object.entries(s)){
+  html+=`<div class="card"><b>${sec}</b></div>`;
+  items.forEach(t=>{
+   html+=`<div class="card checkrow" data-row="${i}" style="display:block">
+    <div style="display:flex;gap:10px;align-items:center"><b style="flex:1">${t}</b><select class="result" data-i="${i}" onchange="updateScore()"><option value="">เลือกผล</option><option value="PASS">PASS</option><option value="FAIL">FAIL</option><option value="NA">N/A</option></select></div>
+    <div class="bar" style="margin:9px 0 0"><div class="field"><label>หมายเหตุ / Corrective Action</label><input class="itemnote" data-i="${i}" placeholder="ระบุเมื่อไม่ผ่านหรือมีสิ่งต้องติดตาม"></div><div class="field"><label>รูปหลักฐาน (ถ้ามี)</label><input class="itemphoto" data-i="${i}" type="file" accept="image/*"></div></div>
+   </div>`;i++;
+  });
+ }
+ $('checklistItems').innerHTML=html;updateScore();
+}
+function updateScore(){
+ const r=[...document.querySelectorAll('.result')],pass=r.filter(x=>x.value==='PASS').length,fail=r.filter(x=>x.value==='FAIL').length,na=r.filter(x=>x.value==='NA').length,total=r.filter(x=>x.value).length,score=(pass+fail?Math.round(pass/(pass+fail)*100):0);
+ $('scoreNow').textContent=score+'%';$('passNow').textContent=pass;$('failNow').textContent=fail;$('naNow').textContent=na;
+}
+function clearChecklist(){document.querySelectorAll('.result').forEach(x=>x.value='');document.querySelectorAll('.itemnote').forEach(x=>x.value='');document.querySelectorAll('.itemphoto').forEach(x=>x.value='');$('notes').value='';updateScore()}
+async function saveChecklist(){
+ const results=[...document.querySelectorAll('.result')],notes=[...document.querySelectorAll('.itemnote')];
+ const states=results.map(x=>x.value),pass=states.filter(x=>x==='PASS').length,fail=states.filter(x=>x==='FAIL').length,na=states.filter(x=>x==='NA').length;
+ if(states.some(x=>!x)){toast('กรุณาเลือกผลให้ครบทุกข้อ หรือเลือก N/A');return}
+ const o=outlets.find(x=>x[0]===$('outletSelect').value);
+ const itemNotes=notes.map(x=>x.value||'');
+ runs.push({id:Date.now(),date:new Date().toISOString().slice(0,10),shift:$('shift').value,inspector:$('inspector').value||'ไม่ระบุชื่อ',code:o[0],name:o[1],floor:o[2],results:states,itemNotes,checks:states.map(x=>x==='PASS'),pass,fail,na,percent:Math.round(pass/(pass+fail||1)*100),notes:$('notes').value});
+ logAudit('SAVE','Checklist '+runs[runs.length-1].id,`${o[1]} ${runs[runs.length-1].date} Score ${runs[runs.length-1].percent}%`);localStorage.setItem('baiyokeRuns',JSON.stringify(runs));
+ if(API_BASE){
+  try{await apiFetch('/api/runs',{method:'POST',body:JSON.stringify(runs[runs.length-1])});toast('บันทึกผลการตรวจ Online แล้ว');}
+  catch(e){toast('บันทึก Local แล้ว แต่ส่ง Online ไม่สำเร็จ')}
+ }else toast('บันทึกผลการตรวจแล้ว');
+ updateStats();renderDashboard();
+}
+
+function renderMaster(){
+ const u=currentUser();if(!u)return;
+ const rs=runs.filter(r=>canSeeOutlet(r.code)), cs=complaints.filter(c=>canSeeOutlet(c.code)), is=incidents.filter(i=>canSeeOutlet(i.code));
+ const score=rs.length?Math.round(rs.reduce((a,r)=>a+(r.percent||0),0)/rs.length):0, fail=rs.reduce((a,r)=>a+(r.fail||0),0);
+ const openC=cs.filter(c=>c.status!=='CLOSED'),openI=is.filter(i=>i.status!=='CLOSED'),pending=rs.filter(r=>!r.approval||r.approval.status==='PENDING');
+ $('mScore').textContent=score+'%';$('mChecks').textContent=rs.length;$('mFail').textContent=fail;$('mComplaint').textContent=openC.length;$('mIncident').textContent=openI.length;$('mApproval').textContent=pending.length;
+ const by={};rs.forEach(r=>{by[r.code]??={name:r.name,floor:r.floor,score:0,n:0,fail:0};by[r.code].score+=r.percent||0;by[r.code].n++;by[r.code].fail+=r.fail||0});
+ const rows=Object.values(by).map(x=>({...x,avg:Math.round(x.score/x.n)})).sort((a,b)=>b.avg-a.avg);
+ $('masterOutlet').innerHTML=rows.length?rows.map((x,i)=>`<div style="padding:9px 0;border-bottom:1px solid var(--line)"><b>${i+1}. ${x.name}</b><br><span class="meta">${x.floor} • Score ${x.avg}% • FAIL ${x.fail}</span></div>`).join(''):'<div class="empty">ยังไม่มีผลตรวจ</div>';
+ const attention=[];
+ rows.filter(x=>x.fail>0).sort((a,b)=>b.fail-a.fail).slice(0,5).forEach(x=>attention.push(`❌ ${x.name}: FAIL ${x.fail}`));
+ openI.filter(x=>x.priority==='High').slice(0,5).forEach(x=>attention.push(`🚨 ${x.name}: ${x.title}`));
+ openC.filter(x=>x.priority==='High').slice(0,5).forEach(x=>attention.push(`⚠️ ${x.name}: Complaint ${x.category}`));
+ $('masterAttention').innerHTML=attention.length?attention.map(x=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)">${x}</div>`).join(''):'<div class="empty">ไม่มีรายการเร่งด่วน 🎉</div>';
+ $('masterWorkflow').innerHTML=`<div style="padding:8px 0">Checklist รออนุมัติ <b>${pending.length}</b></div><div style="padding:8px 0">Open Incident <b>${openI.length}</b></div><div style="padding:8px 0">Open Complaint <b>${openC.length}</b></div><div style="padding:8px 0">Overdue Incident <b>${openI.filter(x=>x.due&&daysFromToday(x.due)<0).length}</b></div>`;
+ const today=new Date().toISOString().slice(0,10),todayRuns=rs.filter(r=>r.date===today);
+ $('masterSnapshot').innerHTML=`วันนี้ตรวจ <b>${todayRuns.length}</b> ครั้ง • Score เฉลี่ย <b>${todayRuns.length?Math.round(todayRuns.reduce((a,r)=>a+r.percent,0)/todayRuns.length):0}%</b><br><span class="meta">ข้อมูลจะแสดงตามสิทธิ์ Outlet ของผู้ Login</span>`;
+}
+
+function renderDashboard(){
+ const u=currentUser(),visible=outlets.filter(o=>canSeeOutlet(o[0])),visibleRuns=u?runs.filter(r=>canSeeOutlet(r.code)):[];
+ const all=visibleRuns, avg=all.length?Math.round(all.reduce((a,r)=>a+(r.percent||0),0)/all.length):0;
+ $('execScore').textContent=avg+'%';$('execRuns').textContent=all.length;$('execFail').textContent=all.reduce((a,r)=>a+(r.fail||0),0);
+ $('execOpen').textContent=incidents.filter(i=>i.status==='OPEN'&&visible.some(o=>o[0]===i.code)).length;
+ const rows=visible.map(o=>{const rs=all.filter(r=>r.code===o[0]),r=rs[0],fail=rs.reduce((a,x)=>a+(x.fail||0),0),inc=incidents.filter(i=>i.code===o[0]&&i.status==='OPEN').length,score=rs.length?Math.round(rs.reduce((a,x)=>a+(x.percent||0),0)/rs.length):0;return {o,rs,score,fail,inc}});
+ $('dashBody').innerHTML=rows.map(x=>`<tr><td>${x.o[1]}</td><td>${x.o[2]}</td><td><span class="pill">${x.score}%</span></td><td>${x.rs.length}</td><td>${x.fail}</td><td>${x.inc}</td></tr>`).join('');
+ if(!all.length){$('topOutlet').textContent='ยังไม่มีข้อมูล';$('attentionOutlet').textContent='ยังไม่มีข้อมูล';$('todaySummary').textContent='ยังไม่มีการตรวจ';$('riskSummary').textContent='ยังไม่มี FAIL';return}
+ const ranked=rows.filter(x=>x.rs.length).sort((a,b)=>b.score-a.score),top=ranked[0],low=ranked.slice().sort((a,b)=>(b.fail+b.inc)-(a.fail+a.inc))[0];
+ $('topOutlet').innerHTML=`<b>${top.o[1]}</b><br>${top.o[2]} • ${top.score}%`;
+ $('attentionOutlet').innerHTML=`<b>${low.o[1]}</b><br>${low.fail} FAIL • ${low.inc} Open Incident`;
+ const today=new Date().toISOString().slice(0,10),tr=all.filter(r=>r.date===today);
+ $('todaySummary').innerHTML=`ตรวจแล้ว <b>${tr.length}</b> ครั้ง • Average <b>${tr.length?Math.round(tr.reduce((a,r)=>a+r.percent,0)/tr.length):0}%</b>`;
+ const failRows=all.filter(r=>(r.fail||0)>0).slice(-8).reverse();
+ $('riskSummary').innerHTML=failRows.length?failRows.map(r=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${r.name}</b> • ${r.date} • FAIL ${r.fail||0} • Score ${r.percent}%<br><span class="meta">${r.notes||'ไม่มี Overall Note'}</span></div>`).join(''):'ไม่พบรายการ FAIL';
+}
+function renderHistory(){const u=currentUser();const visibleRuns=u?runs.filter(r=>canSeeOutlet(r.code)):[];if(!visibleRuns.length){$('historyBox').innerHTML='<div class="empty">ยังไม่มีรายการบันทึก</div>';return}$('historyBox').innerHTML='<table><thead><tr><th>Date</th><th>Outlet</th><th>Shift</th><th>Inspector</th><th>Score</th><th>FAIL</th></tr></thead><tbody>'+visibleRuns.slice().reverse().map(r=>`<tr><td>${r.date}</td><td>${r.name}</td><td>${r.shift}</td><td>${r.inspector}</td><td>${r.percent}%</td><td>${r.fail||0}</td></tr>`).join('')+'</tbody></table>'}
+async function addIncident(){
+ const code=$('incidentOutlet').value,o=outlets.find(x=>x[0]===code);
+ const item={id:Date.now(),code,name:o[1],type:$('incidentType').value,priority:$('incidentPriority').value,title:$('incidentTitle').value||'ไม่ระบุหัวข้อ',owner:$('incidentOwner').value||'ยังไม่มอบหมาย',due:$('incidentDue').value||'',note:$('incidentNote').value||'',status:'OPEN',date:new Date().toISOString().slice(0,10),createdBy:(currentUser()||{}).name||'Unknown'};
+ incidents.push(item);logAudit('CREATE','Incident '+item.id,`${item.name} • ${item.title}`);localStorage.setItem('baiyokeIncidents',JSON.stringify(incidents));
+ if(API_BASE){
+  try{await apiFetch('/api/incidents',{method:'POST',body:JSON.stringify(item)});toast('สร้าง Incident Online แล้ว')}
+  catch(e){toast('สร้าง Local แล้ว แต่ส่ง Online ไม่สำเร็จ')}
+ }
+ $('incidentTitle').value='';$('incidentOwner').value='';$('incidentDue').value='';$('incidentNote').value='';
+ toast('สร้าง Incident แล้ว');renderIncidents();updateStats();
+}
+function prefillFromFail(){
+ const u=currentUser(),visible=u?runs.filter(r=>canSeeOutlet(r.code)):[];
+ const r=visible.slice().reverse().find(x=>(x.fail||0)>0);
+ if(!r){toast('ยังไม่มี FAIL ล่าสุด');return}
+ $('incidentOutlet').value=r.code;$('incidentType').value='Other';$('incidentPriority').value='High';
+ $('incidentTitle').value='ติดตาม FAIL จาก Checklist';$('incidentOwner').value='';$('incidentNote').value=`พบ FAIL จำนวน ${r.fail} รายการจากการตรวจ ${r.name} วันที่ ${r.date}. Score ${r.percent}%.`;
+ toast('นำข้อมูล FAIL ล่าสุดมาใส่แล้ว');
+}
+function renderIncidents(){
+ const u=currentUser(),visible=u?incidents.filter(i=>canSeeOutlet(i.code)):[];
+ if(!visible.length){$('incidentList').innerHTML='<div class="empty">ยังไม่มี Incident / Complaint</div>';return}
+ $('incidentList').innerHTML=visible.slice().sort((a,b)=>b.id-a.id).map((i,idx)=>`<div style="padding:14px 0;border-bottom:1px solid var(--line)">
+ <div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><b>${i.title}</b><span class="pill">${i.status}</span><span class="meta">${i.priority}</span></div>
+ <div class="meta">${i.name} • ${i.type} • ผู้รับผิดชอบ: ${i.owner} • Due: ${i.due||'-'}</div>
+ <div style="margin:7px 0">${i.note||'-'}</div>
+ <div class="actions">
+ ${i.status!=='CLOSED'?`<button class="ghost" onclick="setIncidentStatus(${i.id},'IN_PROGRESS')">In Progress</button><button class="goldbtn" onclick="setIncidentStatus(${i.id},'CLOSED')">Close</button>`:`<span class="meta">Closed</span>`}
+ </div></div>`).join('');
+}
+async function setIncidentStatus(id,status){
+ const i=incidents.find(x=>x.id===id);if(!i)return;i.status=status;i.closedAt=status==='CLOSED'?new Date().toISOString():(i.closedAt||'');
+ localStorage.setItem('baiyokeIncidents',JSON.stringify(incidents));if(API_BASE){try{await apiFetch('/api/incidents/'+id,{method:'PUT',body:JSON.stringify({status,closedAt:i.closedAt})})}catch(e){}}renderIncidents();updateStats();toast(status==='CLOSED'?'ปิด Incident แล้ว':'อัปเดตสถานะแล้ว');
+}
+function updateStats(){let today=new Date().toISOString().slice(0,10),rs=runs.filter(r=>r.date===today);$('statDone').textContent=(rs.length?Math.round(rs.reduce((a,r)=>a+r.percent,0)/rs.length):0)+'%';$('statIncident').textContent=incidents.filter(i=>i.status==='OPEN').length}
+function toast(t){$('toast').textContent=t;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',1800)}
+
+function resetDemoLogin(){
+ localStorage.removeItem('baiyokeLogin');
+ localStorage.setItem('baiyokeEmployees',JSON.stringify(DEMO_EMPLOYEES));
+ $('loginUser').value='ADMIN001';$('loginPass').value='1234';$('loginRole').value='Admin';
+ toast('รีเซ็ตรหัสทดสอบแล้ว: ADMIN001 / 1234');
+}
+
+async function loginDemo(){
+ const u=$('loginUser').value.trim(), p=$('loginPass').value;
+ if(!u||!p){toast('กรุณากรอก Username และ Password');return}
+ if(API_BASE){
+  try{
+   const res=await apiFetch('/api/login',{method:'POST',body:JSON.stringify({employeeId:u,password:p})});
+   const a=res.user;
+   localStorage.setItem('baiyokeLogin',JSON.stringify({user:a.employeeId,name:a.name,role:a.role,outlet:a.outlet,outletName:(outlets.find(o=>o[0]===a.outlet)||[])[1]||'All Outlets'}));
+   toast('เข้าสู่ระบบ Online สำเร็จ');show('hub');updateUserBadge();filterOutletSelect();renderOutlets();return;
+  }catch(e){toast('Login Online ไม่สำเร็จ');return}
+ }
+ const acct=(employees.find(e=>String(e.id||'').toLowerCase()===u.toLowerCase()&&String(e.pass||'')===p&&e.status==='ACTIVE')
+   || DEMO_EMPLOYEES.find(e=>e.id.toLowerCase()===u.toLowerCase()&&e.pass===p&&e.status==='ACTIVE'));
+ if(!acct){toast('รหัสพนักงานหรือ Password ไม่ถูกต้อง');return}
+ localStorage.setItem('baiyokeLogin',JSON.stringify({user:acct.id,name:acct.name,role:acct.role,outlet:acct.outlet,outletName:acct.outletName}));
+ toast('เข้าสู่ระบบสำเร็จ');show('hub');updateUserBadge();applyPermissions();
+}
+function logoutDemo(){
+ localStorage.removeItem('baiyokeLogin');$('loginUser').value='';$('loginPass').value='';
+ show('login');updateUserBadge();toast('ออกจากระบบแล้ว');
+}
+function currentUser(){return JSON.parse(localStorage.getItem('baiyokeLogin')||'null')}
+function canSeeOutlet(code){
+ const u=currentUser(); if(!u)return false;
+ return u.role==='Admin'||u.outlet==='ALL'||u.outlet===code;
+}
+function applyPermissions(){
+ const u=currentUser(); const btn=$('logoutBtn');
+ if(btn)btn.style.display=u?'block':'none';
+ const isAdmin=u&&u.role==='Admin';
+ const teamBtn=[...document.querySelectorAll('[data-page="team"]')][0];
+ if(teamBtn)teamBtn.style.display=isAdmin?'block':'none';
+}
+
+
+
+
+const API_BASE=localStorage.getItem('baiyokeApiBase')||'';
+async function apiFetch(path,options={}){
+ if(!API_BASE) throw new Error('LOCAL_MODE');
+ const r=await fetch(API_BASE+path,{headers:{'Content-Type':'application/json',...(options.headers||{})},...options});
+ if(!r.ok) throw new Error((await r.text())||('HTTP '+r.status));
+ return r.json();
+}
+async function checkApi(){
+ if(!$('apiStatus'))return;
+ if(!API_BASE){$('apiStatus').textContent='● Local Demo';return}
+ try{await apiFetch('/api/health');$('apiStatus').textContent='● Online API'}catch(e){$('apiStatus').textContent='● API Offline'}
+}
+function setApiBase(){
+ const v=prompt('ใส่ Backend URL เช่น https://your-api.example.com',API_BASE);
+ if(v===null)return;
+ localStorage.setItem('baiyokeApiBase',v.replace(/\/$/,''));
+ location.reload();
+}
+
+const DEMO_EMPLOYEES=[
+ {id:'ADMIN001',name:'Baiyoke Admin',pass:'1234',role:'Admin',outlet:'ALL',outletName:'All Outlets',status:'ACTIVE'},
+ {id:'MGR001',name:'F&B Manager',pass:'1234',role:'F&B Manager',outlet:'ALL',outletName:'All Outlets',status:'ACTIVE'},
+ {id:'SUP76',name:'Supervisor 76F',pass:'1234',role:'Supervisor',outlet:'BKS76',outletName:'Bangkok Sky Restaurant 76F',status:'ACTIVE'},
+ {id:'SUP78',name:'Supervisor 78F',pass:'1234',role:'Supervisor',outlet:'BKS78',outletName:'Bangkok Sky Restaurant 78F',status:'ACTIVE'},
+ {id:'INSPECT001',name:'Inspector',pass:'1234',role:'Inspector',outlet:'ALL',outletName:'All Outlets',status:'ACTIVE'}
 ];
-function renderHub(){
- const visible=cards.filter(c=>c[3]!=="admin"||canAdmin());
- document.getElementById("app").innerHTML=header()+`<main class="wrap">
- <div class="hero"><div><span class="badge">Baiyoke Sky Hotel · F&B</span><h1>Operations & Training Hub</h1><p class="muted">ระบบงานปฏิบัติการและฝึกอบรมสำหรับงานอาหารและเครื่องดื่ม</p></div><button class="btn primary" onclick="openAnnouncement()">📢 ดูประกาศ</button></div>
- ${db.announcements.length?`<div class="announce"><b>📢 ${esc(db.announcements[0].title)}</b><div class="muted" style="margin-top:5px">${esc(db.announcements[0].detail)}</div></div>`:""}
- <div class="stats"><div class="stat"><b>${db.outlets.length}</b><span>พื้นที่/Outlet</span></div><div class="stat"><b>${db.users.length}</b><span>ผู้ใช้งาน</span></div><div class="stat"><b>0</b><span>Open Incidents</span></div><div class="stat"><b>0</b><span>Pending Approval</span></div></div>
- <section class="section"><div class="sectionHead"><h2>เมนูระบบ</h2><span class="muted">เลือกเมนูเพื่อเข้าใช้งาน</span></div><div class="grid">${visible.map(c=>`<div class="card"><div class="icon">${c[0]}</div><h3>${c[1]}</h3><p>${c[2]}</p><button class="btn primary" onclick="openModule('${c[3]}')">เปิดระบบ</button></div>`).join("")}</div></section>
- <footer>© 2026 Baiyoke Sky F&B Operations Hub · Prototype Phase 23 · Inspired by FAB Operations & Training Hub</footer></main>`;
+let employees=JSON.parse(localStorage.getItem('baiyokeEmployees')||'null');
+const demoIds=DEMO_EMPLOYEES.map(e=>e.id);
+if(!Array.isArray(employees)||employees.length===0){
+  employees=DEMO_EMPLOYEES;
+}else{
+  // Repair stale LocalStorage accounts from earlier demo versions.
+  const hasDemo=demoIds.some(id=>employees.some(e=>String(e.id||'').toUpperCase()===id));
+  if(!hasDemo){
+    employees=DEMO_EMPLOYEES;
+    localStorage.setItem('baiyokeEmployees',JSON.stringify(employees));
+  }
 }
-function openModule(m){
- if(m==="admin")return renderAdmin();
- const titles={checklist:"Checklist",incident:"Incident Report",complaint:"Complaint Management",approval:"Approval Queue",alerts:"Notifications",dashboard:"Dashboard",executive:"Executive Master"};
- const desc={checklist:"บันทึก Checklist แยกตาม Outlet และรอบงาน",incident:"บันทึกเหตุการณ์พร้อมระดับความรุนแรงและผู้รับผิดชอบ",complaint:"บันทึกข้อร้องเรียนและสถานะการแก้ไข",approval:"ตรวจรายการที่รออนุมัติ",alerts:"ประกาศและข้อความจากส่วนกลาง",dashboard:"ดู KPI และสถานะการดำเนินงาน",executive:"สรุปภาพรวมสำหรับผู้บริหาร"};
- document.getElementById("app").innerHTML=header()+`<main class="wrap"><button class="btn" onclick="renderHub()">← กลับ Hub</button><div class="hero" style="margin-top:18px"><div><h1>${titles[m]}</h1><p class="muted">${desc[m]}</p></div><span class="badge">Prototype UI พร้อมต่อ Backend</span></div>
- <div class="admin"><div class="notice"><b>${titles[m]}</b><br><span class="muted">โครงสร้างหน้านี้จัดไว้ให้ต่อระบบจริงภายหลัง โดยยังไม่แกล้งทำว่าเชื่อมฐานข้อมูลแล้ว</span></div>
- ${m==="checklist"?checklistUI():genericUI(m)}</div></main>`;
+function renderEmployeeTable(){
+ if(!employees.length){$('employeeTable').innerHTML='<div class="empty">ยังไม่มีบัญชีพนักงาน — เพิ่มรหัสพนักงานด้านบน</div>';return}
+ $('employeeTable').innerHTML='<table><thead><tr><th>รหัส</th><th>ชื่อ</th><th>Role</th><th>Outlet</th><th>Status</th><th></th></tr></thead><tbody>'+
+ employees.map((e,i)=>`<tr><td><b>${e.id}</b></td><td>${e.name}</td><td>${e.role}</td><td>${e.outletName}</td><td>${e.status}</td><td><button class="ghost" onclick="toggleEmployee(${i})">${e.status==='ACTIVE'?'ปิดใช้งาน':'เปิดใช้งาน'}</button></td></tr>`).join('')+
+ '</tbody></table>';
 }
-function checklistUI(){return `<div class="formGrid"><div class="field"><label>Outlet</label><select><option>76F</option><option>78F</option><option>All F&B</option></select></div><div class="field"><label>รอบตรวจ</label><select><option>Opening</option><option>Mid Shift</option><option>Closing</option></select></div></div><table class="table"><tr><th>รายการตรวจ</th><th>ผล</th><th>หมายเหตุ</th></tr><tr><td>ความสะอาดพื้นที่บริการ</td><td><select><option>PASS</option><option>FAIL</option></select></td><td><input placeholder="หมายเหตุ"></td></tr><tr><td>อุณหภูมิอาหาร/ตู้เย็น</td><td><select><option>PASS</option><option>FAIL</option></select></td><td><input placeholder="หมายเหตุ"></td></tr><tr><td>มาตรฐาน Service</td><td><select><option>PASS</option><option>FAIL</option></select></td><td><input placeholder="หมายเหตุ"></td></tr></table><div class="toolbar"><button class="btn" onclick="renderHub()">ยกเลิก</button><button class="btn primary" onclick="alert('บันทึกแบบ Prototype สำเร็จ')">บันทึก Checklist</button></div>`}
-function genericUI(m){return `<div class="empty">หน้านี้พร้อมเป็นโครงสร้างการทำงานแล้ว<br><br><button class="btn primary" onclick="alert('เปิดฟอร์ม Prototype')">สร้างรายการใหม่</button></div>`}
-function openAnnouncement(){document.getElementById("app").insertAdjacentHTML("beforeend",`<div class="modal" id="modal"><div class="modalBox"><div class="modalHead"><h2>📢 ประกาศ</h2><button class="btn" onclick="closeModal()">ปิด</button></div>${db.announcements.map(a=>`<div class="notice"><b>${esc(a.title)}</b><p>${esc(a.detail)}</p><small>${esc(a.date)}</small></div>`).join("")}</div></div>`)}
-function closeModal(){document.getElementById("modal")?.remove()}
-function renderAdmin(){
- document.getElementById("app").innerHTML=header()+`<main class="wrap"><button class="btn" onclick="renderHub()">← กลับ Hub</button><div class="hero" style="margin-top:18px"><div><h1>เครื่องมือผู้ดูแลระบบ</h1><p class="muted">จัดการผู้ใช้, สาขา/Outlet, ประกาศ และสิทธิ์ในจุดเดียว</p></div></div>
- <div class="admin"><div class="tabs"><button class="btn active" onclick="adminTab('users',this)">👥 Users</button><button class="btn" onclick="adminTab('outlets',this)">🏨 Outlets</button><button class="btn" onclick="adminTab('announce',this)">📢 Announcements</button><button class="btn" onclick="adminTab('systems',this)">⚙️ Systems</button></div><div id="adminBody"></div></div></main>`;
- adminTab("users",document.querySelector(".tabs button"));
+async function addEmployee(){
+ const id=$('empId').value.trim(),name=$('empName').value.trim(),pass=$('empPass').value,role=$('empRole').value,oc=$('empOutlet').value,status=$('empStatus').value;
+ if(!id||!name||!pass){toast('กรุณากรอก รหัส / ชื่อ / Password');return}
+ if(employees.some(e=>e.id.toLowerCase()===id.toLowerCase())){toast('รหัสพนักงานนี้มีแล้ว');return}
+ const o=oc==='ALL'?['ALL','All Outlets','ทุก Outlet']:outlets.find(x=>x[0]===oc);
+ employees.push({id,name,pass,role,outlet:oc,outletName:o[1],status});
+ localStorage.setItem('baiyokeEmployees',JSON.stringify(employees));
+ $('empId').value='';$('empName').value='';$('empPass').value='';
+ renderEmployeeTable();toast('สร้างบัญชีพนักงานแล้ว');
 }
-function adminTab(tab,btn){document.querySelectorAll(".tabs button").forEach(x=>x.classList.remove("active"));btn.classList.add("active");const b=document.getElementById("adminBody");
- if(tab==="users")b.innerHTML=`<div class="toolbar"><button class="btn primary" onclick="addUser()">+ เพิ่มผู้ใช้</button></div><table class="table"><tr><th>รหัส</th><th>ชื่อ</th><th>ตำแหน่ง</th><th>Outlet</th><th></th></tr>${db.users.map((u,i)=>`<tr><td>${esc(u.id)}</td><td>${esc(u.name)}</td><td>${esc(u.role)}</td><td>${esc(u.outlet)}</td><td><button class="btn danger" onclick="delUser(${i})">ลบ</button></td></tr>`).join("")}</table>`;
- if(tab==="outlets")b.innerHTML=`<div class="toolbar"><button class="btn primary" onclick="addOutlet()">+ เพิ่ม Outlet</button></div><table class="table"><tr><th>รหัส</th><th>ชื่อ</th><th>สถานะ</th><th></th></tr>${db.outlets.map((o,i)=>`<tr><td>${esc(o.code)}</td><td>${esc(o.name)}</td><td>${esc(o.status)}</td><td><button class="btn danger" onclick="delOutlet(${i})">ลบ</button></td></tr>`).join("")}</table>`;
- if(tab==="announce")b.innerHTML=`<div class="toolbar"><button class="btn primary" onclick="addAnnouncement()">+ เพิ่มประกาศ</button></div>${db.announcements.map((a,i)=>`<div class="notice"><b>${esc(a.title)}</b><div>${esc(a.detail)}</div><button class="btn danger" style="margin-top:8px" onclick="delAnnouncement(${i})">ลบ</button></div>`).join("")}`;
- if(tab==="systems")b.innerHTML=`<div class="notice"><b>สิทธิ์ระบบ</b><br>Admin เห็นทุกระบบ · Manager เห็นงาน F&B · Supervisor เห็นตาม Outlet · Inspector เห็นงานตรวจ</div><div class="notice"><b>สถานะการเชื่อมต่อ</b><br>Frontend: <span style="color:var(--ok)">พร้อมใช้งาน</span><br>Backend/Database: ยังไม่เชื่อม (ตามจริง)</div>`;
+function toggleEmployee(i){employees[i].status=employees[i].status==='ACTIVE'?'INACTIVE':'ACTIVE';localStorage.setItem('baiyokeEmployees',JSON.stringify(employees));renderEmployeeTable()}
+
+
+let outletOverrides=JSON.parse(localStorage.getItem('baiyokeOutletOverrides')||'{}');
+function standardText(){
+ let a=[];for(const [k,v] of Object.entries(sections)){a.push('## '+k);v.forEach(x=>a.push('- '+x));a.push('')}return a.join('\n');
 }
-function addUser(){const id=prompt("รหัสพนักงาน");if(!id)return;const name=prompt("ชื่อ");if(!name)return;const role=prompt("ตำแหน่ง","Supervisor")||"Supervisor";const outlet=prompt("Outlet","76F")||"All";const pin=prompt("PIN","1234")||"1234";db.users.push({id:id.toUpperCase(),name,role,outlet,pin});save();renderAdmin()}
-function delUser(i){if(db.users[i].id==="ADMIN001")return alert("ลบ Admin หลักไม่ได้");if(confirm("ลบผู้ใช้นี้?")){db.users.splice(i,1);save();renderAdmin()}}
-function addOutlet(){const code=prompt("รหัส Outlet");if(!code)return;const name=prompt("ชื่อ Outlet");if(!name)return;db.outlets.push({code,name,status:"เปิด"});save();renderAdmin()}
-function delOutlet(i){if(confirm("ลบ Outlet นี้?")){db.outlets.splice(i,1);save();renderAdmin()}}
-function addAnnouncement(){const title=prompt("หัวเรื่อง");if(!title)return;const detail=prompt("รายละเอียด","ประกาศจากส่วนกลาง");db.announcements.unshift({title,detail,date:new Date().toLocaleDateString("th-TH")});save();renderAdmin()}
-function delAnnouncement(i){db.announcements.splice(i,1);save();renderAdmin()}
-renderLogin();
+function parseChecklist(text){
+ let s={},sec=null;
+ text.split('\n').forEach(x=>{x=x.trim();if(x.startsWith('## ')){sec=x.slice(3).trim();s[sec]=[]}else if(x.startsWith('- ')&&sec)s[sec].push(x.slice(2).trim())});
+ return s;
+}
+function outletChecklist(code){return outletOverrides[code]||sections}
+function loadOutletEditor(){
+ const c=$('editorOutlet').value,o=outlets.find(x=>x[0]===c);if(!o)return;
+ $('editorName').value=o[1];$('editorFloor').value=o[2];
+ let s=outletChecklist(c),a=[];Object.entries(s).forEach(([k,v])=>{a.push('## '+k);v.forEach(x=>a.push('- '+x));a.push('')});$('editorText').value=a.join('\n');
+}
+function saveOutletMeta(){
+ const c=$('editorOutlet').value,o=outlets.find(x=>x[0]===c);if(!o)return;
+ o[1]=$('editorName').value.trim()||o[1];o[2]=$('editorFloor').value.trim()||o[2];
+ localStorage.setItem('baiyokeOutlets',JSON.stringify(outlets));renderOutlets();fillSelects();renderOutletAdmin();toast('บันทึกข้อมูล Outlet แล้ว');
+}
+function saveOutletChecklist(){
+ const c=$('editorOutlet').value,s=parseChecklist($('editorText').value);
+ if(!Object.keys(s).length){toast('กรุณาใส่หมวดและรายการตรวจ');return}
+ outletOverrides[c]=s;localStorage.setItem('baiyokeOutletOverrides',JSON.stringify(outletOverrides));
+ toast('บันทึก Checklist แยกของ Outlet แล้ว');
+}
+function resetEditorChecklist(){
+ $('editorText').value=standardText();toast('โหลด Checklist มาตรฐานแล้ว — กดบันทึกเพื่อใช้กับ Outlet');
+}
+function renderOutletAdmin(){
+ $('outletAdminTable').innerHTML='<table><thead><tr><th>Outlet</th><th>Floor</th><th>Checklist</th><th>สถานะ</th></tr></thead><tbody>'+
+ outlets.map(o=>`<tr><td>${o[1]}</td><td>${o[2]}</td><td>${outletOverrides[o[0]]?'Custom':'Standard'}</td><td>${o[0]}</td></tr>`).join('')+'</tbody></table>';
+}
+
+
+function exportDemoCSV(){
+ const u=currentUser(),rs=u?runs.filter(r=>canSeeOutlet(r.code)):[];
+ const lines=['Date,Shift,Inspector,Outlet,Floor,Score,PASS,FAIL,N/A,Notes'];
+ rs.forEach(r=>lines.push([r.date,r.shift,r.inspector,r.name,r.floor,r.percent,r.pass||0,r.fail||0,r.na||0,r.notes||''].map(v=>`"${String(v).replaceAll('"','""')}"`).join(',')));
+ const blob=new Blob(["\ufeff"+lines.join('\n')],{type:'text/csv;charset=utf-8'}),a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='baiyoke-fnb-dashboard.csv';a.click();URL.revokeObjectURL(a.href);
+}
+
+
+function dateDaysAgo(n){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-n);return d.toISOString().slice(0,10)}
+function reportRuns(){
+ const u=currentUser(),p=$('reportPeriod')?.value||'today',out=$('reportOutlet')?.value||'ALL';
+ let rs=u?runs.filter(r=>canSeeOutlet(r.code)):[];
+ const from=p==='today'?dateDaysAgo(0):p==='7'?dateDaysAgo(6):p==='30'?dateDaysAgo(29):'0000-01-01';
+ rs=rs.filter(r=>r.date>=from&&(out==='ALL'||r.code===out));
+ return rs;
+}
+function renderReports(){
+ const rs=reportRuns(), inc=(currentUser()?incidents.filter(i=>canSeeOutlet(i.code)):[]).filter(i=>{const o=$('reportOutlet')?.value||'ALL';return o==='ALL'||i.code===o});
+ const avg=rs.length?Math.round(rs.reduce((a,r)=>a+(r.percent||0),0)/rs.length):0;
+ $('repChecks').textContent=rs.length;$('repScore').textContent=avg+'%';$('repFail').textContent=rs.reduce((a,r)=>a+(r.fail||0),0);$('repInc').textContent=inc.length;
+ const by={};rs.forEach(r=>{by[r.code]??={name:r.name,floor:r.floor,runs:0,score:0,fail:0};by[r.code].runs++;by[r.code].score+=r.percent||0;by[r.code].fail+=r.fail||0});
+ const rank=Object.values(by).map(x=>({...x,avg:Math.round(x.score/x.runs)})).sort((a,b)=>b.avg-a.avg);
+ $('ranking').innerHTML=rank.length?rank.map((x,i)=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${i+1}. ${x.name}</b><br><span class="meta">${x.floor} • ${x.avg}% • ${x.runs} checks • FAIL ${x.fail}</span></div>`).join(''):'<div class="empty">ยังไม่มีข้อมูล</div>';
+ const fails={};rs.forEach(r=>(r.itemNotes||[]).forEach((n,i)=>{if(n&&r.results?.[i]==='FAIL'){const key=n.trim().toLowerCase();fails[key]=(fails[key]||0)+1}}));
+ const repeat=Object.entries(fails).sort((a,b)=>b[1]-a[1]).slice(0,8);
+ $('repeatFail').innerHTML=repeat.length?repeat.map(x=>`<div style="padding:8px 0;border-bottom:1px solid var(--line)"><b>${x[1]} ครั้ง</b><br><span class="meta">${x[0]}</span></div>`).join(''):'<div class="empty">ยังไม่มี FAIL ที่มีหมายเหตุ</div>';
+ const open=inc.filter(i=>i.status==='OPEN').length, prog=inc.filter(i=>i.status==='IN_PROGRESS').length, closed=inc.filter(i=>i.status==='CLOSED').length;
+ $('incidentStats').innerHTML=`<div style="padding:8px 0">OPEN <b>${open}</b></div><div style="padding:8px 0">IN PROGRESS <b>${prog}</b></div><div style="padding:8px 0">CLOSED <b>${closed}</b></div>`;
+ $('reportTable').innerHTML=rs.length?'<table><thead><tr><th>Date</th><th>Outlet</th><th>Inspector</th><th>Score</th><th>PASS</th><th>FAIL</th><th>N/A</th></tr></thead><tbody>'+rs.slice().sort((a,b)=>b.id-a.id).map(r=>`<tr><td>${r.date}</td><td>${r.name}</td><td>${r.inspector}</td><td>${r.percent}%</td><td>${r.pass||0}</td><td>${r.fail||0}</td><td>${r.na||0}</td></tr>`).join('')+'</tbody></table>':'<div class="empty">ไม่มีรายการในช่วงที่เลือก</div>';
+}
+function fillReportOutlet(){
+ if(!$('reportOutlet'))return;const u=currentUser(),v=u?outlets.filter(o=>canSeeOutlet(o[0])):[];
+ $('reportOutlet').innerHTML='<option value="ALL">All permitted outlets</option>'+v.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join('');
+}
+
+
+
+
+let complaints=JSON.parse(localStorage.getItem('baiyokeComplaints')||'[]');
+function renderComplaintOutlets(){if(!$('compOutlet'))return;const u=currentUser(),v=u?outlets.filter(o=>canSeeOutlet(o[0])):[];$('compOutlet').innerHTML=v.map(o=>`<option value="${o[0]}">${o[1]} — ${o[2]}</option>`).join('')}
+function addComplaint(){
+ const o=outlets.find(x=>x[0]===$('compOutlet').value);if(!o)return;
+ const c={id:Date.now(),source:$('compSource').value,code:o[0],name:o[1],floor:o[2],priority:$('compPriority').value,category:$('compCategory').value,owner:$('compOwner').value||'ยังไม่มอบหมาย',due:$('compDue').value||'',detail:$('compDetail').value||'',action:$('compAction').value||'',status:'OPEN',createdAt:new Date().toISOString(),createdBy:(currentUser()||{}).name||'Unknown'};
+ complaints.push(c);localStorage.setItem('baiyokeComplaints',JSON.stringify(complaints));logAudit('CREATE','Complaint '+c.id,`${c.source} • ${c.name} • ${c.category}`);clearComplaintForm();renderComplaints();toast('บันทึก Complaint แล้ว');
+}
+function clearComplaintForm(){['compOwner','compDue','compDetail','compAction'].forEach(id=>$(id).value='')}
+function renderComplaints(){
+ const u=currentUser(),v=u?complaints.filter(c=>canSeeOutlet(c.code)):[];
+ const open=v.filter(c=>c.status!=='CLOSED'),high=v.filter(c=>c.priority==='High'&&c.status!=='CLOSED'),over=v.filter(c=>c.status!=='CLOSED'&&c.due&&daysFromToday(c.due)<0),closed=v.filter(c=>c.status==='CLOSED');
+ $('compOpen').textContent=open.length;$('compHigh').textContent=high.length;$('compOverdue').textContent=over.length;$('compClosed').textContent=closed.length;
+ $('complaintList').innerHTML=v.length?v.slice().reverse().map(c=>`<div style="padding:13px 0;border-bottom:1px solid var(--line)"><div style="display:flex;gap:8px;flex-wrap:wrap"><b>${c.name}</b><span class="pill">${c.status}</span><span class="pill">${c.priority}</span></div><div class="meta">${c.source} • ${c.category} • Owner: ${c.owner} • Due: ${c.due||'-'}</div><p>${c.detail||'-'}</p><div class="meta">Corrective Action: ${c.action||'-'}</div><div class="actions">${c.status!=='CLOSED'?`<button class="goldbtn" onclick="closeComplaint(${c.id})">Close</button>`:''}</div></div>`).join(''):'<div class="empty">ยังไม่มี Complaint</div>';
+}
+function closeComplaint(id){const c=complaints.find(x=>x.id===id);if(!c)return;c.status='CLOSED';c.closedAt=new Date().toISOString();c.closedBy=(currentUser()||{}).name||'Unknown';localStorage.setItem('baiyokeComplaints',JSON.stringify(complaints));logAudit('CLOSE','Complaint '+id,c.name);renderComplaints();toast('ปิด Complaint แล้ว')}
+
+let auditLogs=JSON.parse(localStorage.getItem('baiyokeAuditLogs')||'[]');
+function logAudit(action,target,detail){
+ const u=currentUser()||{};auditLogs.push({id:Date.now(),action,target,detail,by:u.name||u.user||'Unknown',role:u.role||'',at:new Date().toISOString()});
+ localStorage.setItem('baiyokeAuditLogs',JSON.stringify(auditLogs));
+}
+function approvalRuns(){
+ const u=currentUser();return u?runs.filter(r=>canSeeOutlet(r.code)):[] 
+}
+function renderApproval(){
+ const rs=approvalRuns(),pending=rs.filter(r=>!r.approval||r.approval.status==='PENDING').length,approved=rs.filter(r=>r.approval?.status==='APPROVED').length,rejected=rs.filter(r=>r.approval?.status==='REJECTED').length;
+ $('apPending').textContent=pending;$('apApproved').textContent=approved;$('apRejected').textContent=rejected;$('apAudit').textContent=auditLogs.length;
+ $('approvalList').innerHTML=rs.length?rs.slice().sort((a,b)=>b.id-a.id).map(r=>{
+  const st=r.approval?.status||'PENDING';
+  return `<div style="padding:13px 0;border-bottom:1px solid var(--line)"><div style="display:flex;gap:8px;flex-wrap:wrap;align-items:center"><b>${r.name}</b><span class="pill">${st}</span></div><div class="meta">${r.date} • ${r.shift} • ${r.inspector} • Score ${r.percent}% • FAIL ${r.fail||0}</div><div class="actions">${st!=='APPROVED'?`<button class="goldbtn" onclick="approveRun(${r.id})">Approve</button>`:''}${st!=='REJECTED'?`<button class="ghost" onclick="rejectRun(${r.id})">Reject</button>`:''}</div></div>`
+ }).join(''):'<div class="empty">ยังไม่มี Checklist</div>';
+ $('auditList').innerHTML=auditLogs.length?auditLogs.slice().reverse().slice(0,30).map(a=>`<div style="padding:9px 0;border-bottom:1px solid var(--line)"><b>${a.action}</b> • ${a.target}<div class="meta">${a.by} (${a.role}) • ${new Date(a.at).toLocaleString()}</div><div class="meta">${a.detail||''}</div></div>`).join(''):'<div class="empty">ยังไม่มี Audit Event</div>';
+}
+function canApprove(){
+ const u=currentUser();return u&&['Admin','F&B Manager','Supervisor'].includes(u.role)
+}
+function approveRun(id){
+ if(!canApprove()){toast('ไม่มีสิทธิ์อนุมัติ');return}
+ const r=runs.find(x=>x.id===id);if(!r)return;r.approval={status:'APPROVED',by:currentUser().name,role:currentUser().role,at:new Date().toISOString()};logAudit('APPROVE','Checklist '+r.id,`${r.name} ${r.date} Score ${r.percent}%`);localStorage.setItem('baiyokeRuns',JSON.stringify(runs));renderApproval();toast('อนุมัติ Checklist แล้ว')
+}
+function rejectRun(id){
+ if(!canApprove()){toast('ไม่มีสิทธิ์ Reject');return}
+ const reason=prompt('เหตุผลที่ Reject');if(reason===null)return;
+ const r=runs.find(x=>x.id===id);if(!r)return;r.approval={status:'REJECTED',by:currentUser().name,role:currentUser().role,at:new Date().toISOString(),reason};logAudit('REJECT','Checklist '+r.id,reason);localStorage.setItem('baiyokeRuns',JSON.stringify(runs));renderApproval();toast('Reject Checklist แล้ว')
+}
+
+let modules=JSON.parse(localStorage.getItem('baiyokeModules')||'null')||[
+ {key:'checklist',name:'Daily Checklist',enabled:true},
+ {key:'dashboard',name:'Dashboard',enabled:true},
+ {key:'reports',name:'Reports & Analytics',enabled:true},
+ {key:'incident',name:'Incident / Complaint',enabled:true},
+ {key:'history',name:'History',enabled:true},
+ {key:'team',name:'Team Management',enabled:true},
+ {key:'settings',name:'Outlet & Checklist Editor',enabled:true}
+];
+let announcements=JSON.parse(localStorage.getItem('baiyokeAnnouncements')||'[]');
+function renderModules(){
+ $('moduleList').innerHTML=modules.map((m,i)=>`<div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--line)"><span><b>${m.name}</b><small class="meta" style="display:block">${m.enabled?'Enabled':'Disabled'}</small></span><button class="${m.enabled?'ghost':'goldbtn'}" onclick="toggleModule(${i})">${m.enabled?'ปิด':'เปิด'}</button></div>`).join('');
+}
+function toggleModule(i){modules[i].enabled=!modules[i].enabled;localStorage.setItem('baiyokeModules',JSON.stringify(modules));applyModuleVisibility();renderModules();toast(modules[i].enabled?'เปิด Module แล้ว':'ปิด Module แล้ว')}
+function applyModuleVisibility(){
+ modules.forEach(m=>document.querySelectorAll(`[data-page="${m.key}"]`).forEach(b=>b.style.display=m.enabled?'':'none'));
+}
+async function addAnnouncement(){
+ const t=$('announceText').value.trim();if(!t){toast('กรุณาใส่ข้อความประกาศ');return}
+ announcements.push({id:Date.now(),text:t,priority:$('announcePriority').value,date:new Date().toISOString().slice(0,10),by:(currentUser()||{}).name||'Admin'});
+ localStorage.setItem('baiyokeAnnouncements',JSON.stringify(announcements));
+ if(API_BASE){try{await apiFetch('/api/announcements',{method:'POST',body:JSON.stringify(announcements[announcements.length-1])});}catch(e){}}
+ $('announceText').value='';renderAnnouncements();toast('Publish Announcement แล้ว');
+}
+function renderAnnouncements(){
+ if(!announcements.length){$('announceList').innerHTML='<div class="empty">ยังไม่มีประกาศ</div>';return}
+ $('announceList').innerHTML=announcements.slice().reverse().map(a=>`<div style="padding:12px 0;border-bottom:1px solid var(--line)"><b>${a.text}</b> <span class="pill">${a.priority}</span><div class="meta">${a.date} • ${a.by}</div></div>`).join('');
+}
+
+fillSelects();checkApi();renderChecklist();renderEmployeeTable();renderIncidents();renderComplaintOutlets();renderComplaints();renderMaster();fillReportOutlet();renderModules();renderAnnouncements();renderNotifications();loadNotificationSettings();applyModuleVisibility();updateUserBadge();applyPermissions();if(currentUser()){show('hub');filterOutletSelect();renderOutlets()}else{show('login')} if($('editorOutlet')){loadOutletEditor();renderOutletAdmin()}
 </script>
+
+<nav class="mobile-bottom" id="mobileBottom">
+ <button data-mob="hub" onclick="show('hub')"><span>⌂</span><small>Hub</small></button>
+ <button data-mob="checklist" onclick="show('checklist')"><span>✓</span><small>Checklist</small></button>
+ <button data-mob="dashboard" onclick="show('master')"><span>▦</span><small>Dashboard</small></button>
+ <button data-mob="incident" onclick="show('incident')"><span>!</span><small>Incident</small></button>
+ <button data-mob="profile" onclick="showProfile()"><span>●</span><small>Profile</small></button>
+</nav>
+<div id="profileSheet" class="profile-sheet">
+ <div class="profile-card">
+  <div class="sectiontitle"><h2>Profile</h2><button class="ghost" onclick="closeProfile()">ปิด</button></div>
+  <div id="profileContent"></div>
+  <div class="actions"><button class="ghost" onclick="enableBrowserAlerts()">Enable Browser Alerts</button><button class="goldbtn" onclick="logoutDemo()">Logout</button></div>
+ </div>
+</div>
 </body></html>
