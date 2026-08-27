@@ -1,5 +1,47 @@
 {
-  "apiBaseUrl": "",
-  "appName": "Baiyoke Sky F&B Operations Hub",
-  "version": "1.0.0-phase12"
+  "app": "Baiyoke Sky F&B Operations Hub",
+  "version": "Phase 23",
+  "reference": "FAB Operations & Training Hub",
+  "mode": "frontend-prototype",
+  "pages": [
+    "Login",
+    "Operations Hub",
+    "Checklist",
+    "Incident",
+    "Complaint",
+    "Approval",
+    "Notifications",
+    "Dashboard",
+    "Executive Master",
+    "Admin Tools"
+  ],
+  "demo_users": [
+    {
+      "id": "ADMIN001",
+      "pin": "1234",
+      "role": "Admin"
+    },
+    {
+      "id": "MGR001",
+      "pin": "1234",
+      "role": "F&B Manager"
+    },
+    {
+      "id": "SUP76",
+      "pin": "1234",
+      "role": "Supervisor",
+      "outlet": "76F"
+    },
+    {
+      "id": "SUP78",
+      "pin": "1234",
+      "role": "Supervisor",
+      "outlet": "78F"
+    },
+    {
+      "id": "INSPECT001",
+      "pin": "1234",
+      "role": "Inspector"
+    }
+  ]
 }
